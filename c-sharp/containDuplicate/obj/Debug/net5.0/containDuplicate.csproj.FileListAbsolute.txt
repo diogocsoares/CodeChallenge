@@ -1,0 +1,16 @@
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/bin/Debug/net5.0/containDuplicate.deps.json
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/bin/Debug/net5.0/containDuplicate.runtimeconfig.json
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/bin/Debug/net5.0/containDuplicate.runtimeconfig.dev.json
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/bin/Debug/net5.0/containDuplicate.dll
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/bin/Debug/net5.0/containDuplicate.pdb
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/Debug/net5.0/containDuplicate.csproj.AssemblyReference.cache
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/Debug/net5.0/containDuplicate.GeneratedMSBuildEditorConfig.editorconfig
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/Debug/net5.0/containDuplicate.AssemblyInfoInputs.cache
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/Debug/net5.0/containDuplicate.AssemblyInfo.cs
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/Debug/net5.0/containDuplicate.csproj.CoreCompileInputs.cache
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/Debug/net5.0/containDuplicate.dll
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/Debug/net5.0/ref/containDuplicate.dll
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/Debug/net5.0/containDuplicate.pdb
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/Debug/net5.0/containDuplicate.genruntimeconfig.cache
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/bin/Debug/net5.0/containDuplicate
+/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/Debug/net5.0/refint/containDuplicate.dll
