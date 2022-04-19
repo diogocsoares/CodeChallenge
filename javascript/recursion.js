@@ -21,3 +21,24 @@ function findFactorialRecursive(number) {
 }
 
 console.log(findFactorialRecursive(5));
+
+
+function recursiveMultiply (num1, num2) {
+   console.log(num1, num2 - 1);
+
+   if (num1 === 0 || num2 === 0)
+      return 0;
+
+   //Base case when recursion ends
+   if (num2 === 1 )
+      return num1;
+   
+   //recursive case
+   //num2 - 1 lead to the base use case
+   //return (num1 + num1 + num1 + num1 + num1...)
+   return (num1 + recursiveMultiply(num1, num2 - 1));
+
+    
+}
+
+console.log(recursiveMultiply(1,1));
