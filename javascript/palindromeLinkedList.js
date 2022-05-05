@@ -1,26 +1,9 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
- * @return {boolean}
- */
 
-function ListNode(val, next) {
-     this.val = (val===undefined ? 0 : val)
-     this.next = (next===undefined ? null : next)
-     return this;
-}
-
-let array = [1, 1, 2, 1, 1];
+let array = [1, 0, 2, 2, 0, 1];
 
 let node = {
-   val: null,
-   next: null
+    val: null,
+    next: null
 };
 
 //console.log(typeof node);
@@ -28,31 +11,31 @@ let node = {
 
 function createList() {
     let point = node;
-    for (let i = 0; i < array.length -1; i++) {
-      point.val = array[i];
-      point.next = {
-         val: array[i + 1],
-         next: null
-      }
-      point = point.next;
-   }
+    for (let i = 0; i < array.length - 1; i++) {
+        point.val = array[i];
+        point.next = {
+            val: array[i + 1],
+            next: null
+        }
+        point = point.next;
+    }
 }
 
 function printList(node) {
-   point = node.next;
-   console.log(node.val);
-   console.log(node.next);
-   while (point.next != null) {
-      console.log(point.val);
-      console.log(point.next);
-      point = point.next;
-   }
+    let point = node.next;
+    console.log(node.val);
+    console.log(node.next);
+    while (point.next != null) {
+        console.log(point.val);
+        console.log(point.next);
+        point = point.next;
+    }
 }
 
 function isPalindromeV1(head) {
     let point = head;
     let arrayA = [];
-    while (point.next != null ) {
+    while (point.next != null) {
         arrayA.push(point.val);
         point = point.next;
     }
@@ -69,50 +52,33 @@ function isPalindromeV1(head) {
 }
 
 function isPalindromeV2(head) {
-    let point = head;
-    let i = 0, pal = 0;
-    let testPalindrome = [] 
-    while (point.next != null) {
-        console.log(`i:${i}, pal:${pal}`);
-        testPalindrome.push(point.val);
-        console.log(` point ${testPalindrome[i]} next: ${point.next.val}`);
-        console.log((point.next.val === testPalindrome[i]));
-        if (point.next.val === testPalindrome[i]) {
-            pal++;
-            i--
-            point = point.next;
-        } else {
-            point = point.next;
-            i++;
-        }
+    function check(node) {
+        if (node === null) return true
+        //        console.log(` head.val: ${head.val} node.val ${node.val} `)
+        let bool = check(node.next) && (head.val == node.val)
+        head = head.next
+        //        console.log(node.next);
+        console.log(node);
+        console.log(head);
+        console.log(bool);
+        return bool
     }
-    testPalindrome.push(point.val);
-    console.log(`i:${i}, pal:${pal}`);
-
-    if (testPalindrome.length === 1) 
-        return true;
-
-    if ((testPalindrome.length === 3) && (testPalindrome[0] === testPalindrome[2])) 
-        return true;
-
-    if ((testPalindrome.length === 3) && (testPalindrome[0] != testPalindrome[2])) 
-        return false;
-    
-    return ((Math.floor(testPalindrome.length / 2)) === pal); 
+    console.log(head);
+    return check(head)
 }
 
 
 createList();
 //printList(node);
 
-console.log(isPalindromeV2(node));
+console.log("Is Palindrome: " + isPalindromeV2(node));
 
 
 
 function isPalindromeV3(head) {
     let point = head;
     let i = 0, pal = 0;
-    let testPalindrome = [] 
+    let testPalindrome = []
     while (point.next != null) {
         testPalindrome.push(point.val);
         if (point.next.val === testPalindrome[i]) {
@@ -125,15 +91,15 @@ function isPalindromeV3(head) {
         }
     }
     testPalindrome.push(point.val);
-    
-    if (testPalindrome.length === 1) 
+
+    if (testPalindrome.length === 1)
         return true;
 
-    if ((testPalindrome.length === 3) && (testPalindrome[0] === testPalindrome[2])) 
+    if ((testPalindrome.length === 3) && (testPalindrome[0] === testPalindrome[2]))
         return true;
-    
-    if ((testPalindrome.length === 3) && (testPalindrome[0] != testPalindrome[2])) 
+
+    if ((testPalindrome.length === 3) && (testPalindrome[0] != testPalindrome[2]))
         return false;
-        
-    return ((Math.floor(testPalindrome.length / 2)) === pal); 
+
+    return ((Math.floor(testPalindrome.length / 2)) === pal);
 }
