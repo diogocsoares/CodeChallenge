@@ -82,10 +82,16 @@ var maxProfit4 = function (prices) {
    let wallet = prices[0];
    let profit = 0;
    let day = 1;
+   let last = 0;
    while (day < prices.length) {
       if (prices[day] > prices[topBDB])
          topBDB = day;
-      if (prices[day] > prices[secondBDB] && day < prices.length - 2)
+      ++day;
+   }
+   day = 1;
+   last = topBDB = prices.length - 1 ? prices.length - 2 : prices.length;
+   while (day < last) {
+      if (prices[day] > prices[secondBDB] && day != topBDB)
          secondBDB = day
       ++day;
    }
@@ -111,9 +117,9 @@ var maxProfit4 = function (prices) {
 
 // console.log('V4');
 
-// console.log(maxProfit4([1, 2, 3, 4, 5]));
-// console.log(maxProfit4([3, 3, 5, 0, 0, 3, 1, 4]));
-// console.log(maxProfit4([1, 4, 2]));
-// console.log(maxProfit4([6, 1, 3, 2, 4, 7]));
-// console.log(maxProfit4([1, 2, 4, 2, 5, 7, 2, 4, 9, 0]));
+console.log(maxProfit4([1, 2, 3, 4, 5]));
+console.log(maxProfit4([3, 3, 5, 0, 0, 3, 1, 4]));
+console.log(maxProfit4([1, 4, 2]));
+console.log(maxProfit4([6, 1, 3, 2, 4, 7]));
+console.log(maxProfit4([1, 2, 4, 2, 5, 7, 2, 4, 9, 0]));
 console.log(maxProfit4([3, 3, 5, 0, 0, 3, 1, 4]));
