@@ -43,7 +43,7 @@ var maxProfit2 = function (prices) {
    return profit;
 };
 
-//console.log(maxProfit2([7, 1, 5, 3, 7, 8]));
+//console.log(maxProfit2([14, 9, 10, 12, 4, 8, 1, 16]));
 
 var maxProfit3 = function (prices) {
    let profit1 = 0
@@ -90,14 +90,17 @@ var maxProfit4 = function (prices) {
          topBDB = day;
       ++day;
    }
+
    day = 1;
-   
-   while (day < prices.length) {
-      if (prices[day] > prices[secondBDB] && day != topBDB)
-         if (day+1 === topBDB)
+   while (day < dayEnd) {
+      if (prices[day] > prices[secondBDB] && day != topBDB && day - 1 != topBDB)
+         if (day + 1 === topBDB)
             day = prices.length;
          else
             secondBDB = day
+      if (day === prices.length - 1 && prices[day] === prices[secondBDB])
+         secondBDB = day
+
       ++day;
    }
    day = 0;
@@ -111,7 +114,7 @@ var maxProfit4 = function (prices) {
       }
       ++day;
    }
-   return [prices[topBDB], prices[secondBDB], topBDB, secondBDB, profit];
+   return [prices[topBDB], prices[secondBDB], profit];
 }
 
 // console.log(maxProfit3([1, 2, 3, 4, 5]));
@@ -122,11 +125,13 @@ var maxProfit4 = function (prices) {
 
 // console.log('V4');
 
-// console.log(maxProfit4([1, 2, 3, 4, 5]));
-// console.log(maxProfit4([3, 3, 5, 0, 0, 3, 1, 4]));
-// console.log(maxProfit4([1, 4, 2]));
-// console.log(maxProfit4([6, 1, 3, 2, 4, 7]));
+//console.log(maxProfit2([1, 2, 3, 4, 5]));
+//console.log(maxProfit2([3, 3, 5, 0, 0, 3, 1, 4]));
+//console.log(maxProfit2([1, 4, 2]));
+//console.log(maxProfit2([6, 1, 3, 2, 4, 7]));
 // console.log(maxProfit4([1, 2, 4, 2, 5, 7, 2, 4, 9, 0]));
 // console.log(maxProfit4([3, 3, 5, 0, 0, 3, 1, 4]));
-console.log(maxProfit3([2,1,2,0,1]));
+// console.log(maxProfit4([2, 1, 2, 0, 1]));
+// console.log(maxProfit4([3, 2, 6, 5, 0, 3]));
+console.log(maxProfit2([14, 9, 10, 12, 4, 8, 1, 16]));
 
