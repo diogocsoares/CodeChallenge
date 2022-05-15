@@ -70,12 +70,6 @@ var maxProfit3 = function (prices) {
    return profit1 + profit2;
 };
 
-//console.log(maxProfit3([1, 2, 3, 4, 5]));
-//console.log(maxProfit3([3, 3, 5, 0, 0, 3, 1, 4]));
-//console.log(maxProfit3([1, 4, 2]));
-//console.log(maxProfit3([6, 1, 3, 2, 4, 7]));
-//console.log(maxProfit3([1, 2, 4, 2, 5, 7, 2, 4, 9, 0]));
-
 
 var maxProfit4 = function (prices) {
    let topBDB = 1;
@@ -117,21 +111,79 @@ var maxProfit4 = function (prices) {
    return [prices[topBDB], prices[secondBDB], profit];
 }
 
-// console.log(maxProfit3([1, 2, 3, 4, 5]));
-// console.log(maxProfit3([3, 3, 5, 0, 0, 3, 1, 4]));
-// console.log(maxProfit3([1, 4, 2]));
-// console.log(maxProfit3([6, 1, 3, 2, 4, 7]));
-// console.log(maxProfit3([1, 2, 4, 2, 5, 7, 2, 4, 9, 0]));
 
-// console.log('V4');
+var maxProfit5 = function (prices) {
+   let day = 1;
+   let wallet = 0;
+   let BDS = 0;
 
-//console.log(maxProfit2([1, 2, 3, 4, 5]));
-//console.log(maxProfit2([3, 3, 5, 0, 0, 3, 1, 4]));
-//console.log(maxProfit2([1, 4, 2]));
-//console.log(maxProfit2([6, 1, 3, 2, 4, 7]));
+   while (day < prices.length) {
+      if (prices[wallet] < prices[day] && prices[day] > prices[BDS]) {
+         BDS = day
+         if (prices.length > 3)
+            day = prices.length;
+      } else {
+         if (prices[wallet] > prices[day]) {
+            wallet = day;
+            if (BDS <= wallet)
+               BDS = wallet
+         }
+      }
+      ++day;
+   }
+
+   console.log(prices);
+   console.log(`wallet: ${prices[wallet]}`);
+   console.log(`profit:${prices[BDS] - prices[wallet]}`);
+   console.log(``);
+
+   if (prices.length <= 3)
+      return prices[BDS] - prices[wallet];
+   else
+      return calcMaxProfit(maxProfit5(prices.slice(wallet, BDS + 1)), maxProfit5(prices.slice(BDS)));
+}
+
+function calcMaxProfit(nP1, nP2) {
+
+   console.log(nP1, nP2);
+   return nP1 + nP2;
+}
+
+
+
+
+
+//console.log(maxProfit5([1, 2, 3, 4, 5]));
+//console.log(maxProfit4([1, 2, 3, 4, 5]));
+//console.log(maxProfit5([3, 3, 5, 0, 0, 3, 1, 4]));
+//console.log(maxProfit4([3, 3, 5, 0, 0, 3, 1, 4]));
+// console.log(maxProfit5([1, 4, 2]));
+//console.log(maxProfit4([1, 4, 2]));
+//console.log(maxProfit5([6, 1, 3, 2, 4, 7]));
+//console.log(maxProfit4([6, 1, 3, 2, 4, 7]));
+// console.log(maxProfit5([1, 2, 4, 2, 5, 7, 2, 4, 9, 0]));
 // console.log(maxProfit4([1, 2, 4, 2, 5, 7, 2, 4, 9, 0]));
+// console.log(maxProfit5([3, 3, 5, 0, 0, 3, 1, 4]));
 // console.log(maxProfit4([3, 3, 5, 0, 0, 3, 1, 4]));
+// console.log(maxProfit5([2, 1, 2, 0, 1]));
 // console.log(maxProfit4([2, 1, 2, 0, 1]));
+// console.log(maxProfit5([3, 2, 6, 5, 0, 3]));
 // console.log(maxProfit4([3, 2, 6, 5, 0, 3]));
-console.log(maxProfit2([14, 9, 10, 12, 4, 8, 1, 16]));
+//console.log(maxProfit5([14, 9, 10, 12, 4, 8, 1, 16]));
+//console.log(maxProfit5([14, 9, 10, 12, 4, 8, 1, 16]));
 
+var maxProfit7 = function (prices) {
+   let buy1 = Infinity;
+   let sell1 = 0;
+   let buy2 = Infinity;
+   let sell2 = 0;
+   for (const day of prices) {
+      buy1 = Math.min(buy1, day);
+      sell1 = Math.max(sell1, day - buy1);
+      buy2 = Math.min(buy2, day - sell1);
+      sell2 = Math.max(sell2, day - buy2);
+   }
+   return sell2;
+};
+
+console.log(maxProfit7([14, 9, 10, 12, 4, 8, 1, 16]));
