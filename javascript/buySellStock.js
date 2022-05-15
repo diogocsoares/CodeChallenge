@@ -21,10 +21,8 @@ var maxProfit = function (prices) {
    return profit;
 };
 
-
 //console.log(maxProfit([7, 1, 5, 3, 6, 4]));
-
-
+//Work
 var maxProfit2 = function (prices) {
    let profit = 0
    let day = 0;
@@ -44,7 +42,7 @@ var maxProfit2 = function (prices) {
 };
 
 //console.log(maxProfit2([14, 9, 10, 12, 4, 8, 1, 16]));
-
+//fail
 var maxProfit3 = function (prices) {
    let profit1 = 0
    let profit2 = 0
@@ -70,7 +68,7 @@ var maxProfit3 = function (prices) {
    return profit1 + profit2;
 };
 
-
+//fail
 var maxProfit4 = function (prices) {
    let topBDB = 1;
    let secondBDB = 1;
@@ -111,7 +109,7 @@ var maxProfit4 = function (prices) {
    return [prices[topBDB], prices[secondBDB], profit];
 }
 
-
+//fail
 var maxProfit5 = function (prices) {
    let day = 1;
    let wallet = 0;
@@ -140,38 +138,22 @@ var maxProfit5 = function (prices) {
    if (prices.length <= 3)
       return prices[BDS] - prices[wallet];
    else
-      return calcMaxProfit(maxProfit5(prices.slice(wallet, BDS + 1)), maxProfit5(prices.slice(BDS)));
+      return maxProfit5(prices.slice(wallet, BDS + 1)), maxProfit5(prices.slice(BDS));
 }
-
-function calcMaxProfit(nP1, nP2) {
-
-   console.log(nP1, nP2);
-   return nP1 + nP2;
-}
-
-
-
 
 
 //console.log(maxProfit5([1, 2, 3, 4, 5]));
-//console.log(maxProfit4([1, 2, 3, 4, 5]));
 //console.log(maxProfit5([3, 3, 5, 0, 0, 3, 1, 4]));
-//console.log(maxProfit4([3, 3, 5, 0, 0, 3, 1, 4]));
 // console.log(maxProfit5([1, 4, 2]));
-//console.log(maxProfit4([1, 4, 2]));
 //console.log(maxProfit5([6, 1, 3, 2, 4, 7]));
-//console.log(maxProfit4([6, 1, 3, 2, 4, 7]));
 // console.log(maxProfit5([1, 2, 4, 2, 5, 7, 2, 4, 9, 0]));
-// console.log(maxProfit4([1, 2, 4, 2, 5, 7, 2, 4, 9, 0]));
 // console.log(maxProfit5([3, 3, 5, 0, 0, 3, 1, 4]));
-// console.log(maxProfit4([3, 3, 5, 0, 0, 3, 1, 4]));
 // console.log(maxProfit5([2, 1, 2, 0, 1]));
-// console.log(maxProfit4([2, 1, 2, 0, 1]));
 // console.log(maxProfit5([3, 2, 6, 5, 0, 3]));
-// console.log(maxProfit4([3, 2, 6, 5, 0, 3]));
 //console.log(maxProfit5([14, 9, 10, 12, 4, 8, 1, 16]));
 //console.log(maxProfit5([14, 9, 10, 12, 4, 8, 1, 16]));
 
+//work
 var maxProfit7 = function (prices) {
    let buy1 = Infinity;
    let sell1 = 0;
