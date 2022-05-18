@@ -1,5 +1,18 @@
 {
   "dependencies": {
     "chai": "*"
-  }
+  },
+  "devDependencies": {
+    "jest": "^28.1.0"
+  },
+  "name": "javascript",
+  "version": "1.0.0",
+  "main": "bigO.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
