@@ -4,6 +4,15 @@
    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
    "version": "0.2.0",
    "configurations": [
+   {
+      "name": "Attach",
+      "port": 9229,
+      "request": "attach",
+      "skipFiles": [
+         "<node_internals>/**"
+      ],
+      "type": "node"
+   },
       
    {
       "name": "Attach",
@@ -21,7 +30,7 @@
          "skipFiles": [
             "<node_internals>/**"
          ],
-         "program": "${workspaceFolder}/javascript/buySellStock"
+         "program": "${workspaceFolder}/javascript/TreeGraph/minimumDepthBinaryTree"
       }
    ]
 }
