@@ -30,7 +30,7 @@
          "skipFiles": [
             "<node_internals>/**"
          ],
-         "program": "${workspaceFolder}/javascript/TreeGraph/minimumDepthBinaryTree"
+         "program": "${workspaceFolder}/javascript/mergeSort"
       }
    ]
 }
