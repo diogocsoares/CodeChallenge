@@ -20,6 +20,7 @@ user.spell = 'abra kadabra'; //O(1)
 console.log(user.age, user.spell); //O(1)
 
 //Hash Collisions = https://www.cs.usfca.edu/~galles/visualization/OpenHash.html
+// When a collision happens our time complexity is O(n/k) where K is the size for our hash table. Removing constants it's became O(n).
 
 // ----- Map -----
 // Using maps you can have any type of object including functions as a key. Another benefit of map is that it maintains insertion order.
@@ -67,7 +68,7 @@ class HashTable {
       const keysArray = []
       for (let i = 0; i < this.data.length; i++) {
          if (this.data[i]) {
-            for (let j = 0; j < this.data[1].length; j++)
+            for (let j = 0; j < this.data[i].length; j++)
                keysArray.push(this.data[i][j][0]);
          }
       } //O(n) with no order.
@@ -76,7 +77,7 @@ class HashTable {
 
 }
 
-const myHashTable = new HashTable(2);
+const myHashTable = new HashTable(10);
 myHashTable.set('grapes', 1000);
 myHashTable.set('chuchu', 100);
 myHashTable.set('apple', 330);

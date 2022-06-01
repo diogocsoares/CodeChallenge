@@ -30,7 +30,7 @@
          "skipFiles": [
             "<node_internals>/**"
          ],
-         "program": "${workspaceFolder}/study/dataStructures/hashTable/hashTable.js"
+         "program": "${workspaceFolder}/study/dataStructures/hashTable/recurringCharactere.js"
       }
    ]
 }
