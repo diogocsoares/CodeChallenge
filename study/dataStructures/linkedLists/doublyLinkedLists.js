@@ -1,53 +1,12 @@
-// A Singly linked list contains a set of nodes, and think of a node as blocks. This nodes have to elements, the values of the data you want to store and a pointer to the next node in line. The fist node es called the head and the last node is called the tail. Linked lists are we call null terminated, which signifies that it's the ends of the list.
-
-// linked lists: apple --> grapes --> pears -->
-
-// apples
-// 8947 --> grapes
-//          8742 --> pears
-//                   372 --> null
-
-//https://visualgo.net/en/list?slide=3
-
-// prepend O(1) - Add into the beginning.
-// append O(1) - Add at the end.
-// lookup O(n) - finding for an item.
-// insert O(n)
-// delete O(n)
-
-// A pointer is simply a reference.
-
-// let obj1 = { a: null };
-// let obj2 = obj1; // it is a pointer. I is nota a copy in memory both objects pointer to the same location in memory.
-
-// obj1.a = 'Hi';
-
-// console.log('1', obj1);
-// console.log('2', obj2);
-
-// 10 --> 5 --> 16
-
-// let myLinkedList = {
-//    head: {
-//       value: 10,
-//       next: {
-//          value: 5,
-//          next: {
-//             value: 16,
-//             next: null // because of null it is the tail
-//          }
-//       }
-//    }
-// }
-
 class ListNode {
    constructor(value) {
       this.value = value,
-         this.next = null
+         this.next = null,
+         this.prev = null
    }
 }
 
-class LinkedList {
+class DoublyLinkedList {
    constructor(value) {
       this.head = new ListNode(value);
       this.tail = this.head;
@@ -56,6 +15,7 @@ class LinkedList {
 
    append(value) {
       const newNode = new ListNode(value);
+      newNode.prev = this.tail;
       this.tail.next = newNode;
       this.tail = newNode;
       this.length++;
@@ -64,6 +24,7 @@ class LinkedList {
 
    prepend(value) {
       const newNode = new ListNode(value);
+      this.head.prev = newNode;
       newNode.next = this.head;
       this.head = newNode;
       this.length++;
@@ -186,30 +147,32 @@ class LinkedList {
    }
 };
 
-const myNewLinkedList = new LinkedList(10);
+const myNewLinkedList = new DoublyLinkedList(10);
 myNewLinkedList.append(5);
-myNewLinkedList.append(16);
-myNewLinkedList.prepend(1);
-console.log(myNewLinkedList.printList());
-myNewLinkedList.insertByValue(10, 2);
-myNewLinkedList.insertByValue(5, 3);
-myNewLinkedList.insertByValue(250, 50);
-myNewLinkedList.insertByValue(1, 99);
-console.log(myNewLinkedList.insertByIndex(3, 123));
-console.log(myNewLinkedList.insertByIndex(200, 140));
-console.log('tail:', myNewLinkedList.tail);
 
-myNewLinkedList.insertByValue(140, 141);
-console.log('tail:', myNewLinkedList.tail);
-console.log(myNewLinkedList.lookup(80));
-console.log(myNewLinkedList.lookup(123));
-console.log(myNewLinkedList.removeByIndex(3));
-console.log(myNewLinkedList.removeByIndex(0));
-console.log(myNewLinkedList.head);
-console.log(myNewLinkedList.removeByValue(3));
-console.log(myNewLinkedList.removeByValue(1));
-console.log(myNewLinkedList.lookup(3));
-console.log(myNewLinkedList.removeByValue(141));
-console.log('tail:', myNewLinkedList.tail);
-console.log(myNewLinkedList.removeByIndex(6));
-console.log('tail:', myNewLinkedList.tail);
+
+// myNewLinkedList.append(16);
+console.log(myNewLinkedList.prepend(1));
+console.log(myNewLinkedList.printList());
+// myNewLinkedList.insertByValue(10, 2);
+// myNewLinkedList.insertByValue(5, 3);
+// myNewLinkedList.insertByValue(250, 50);
+// myNewLinkedList.insertByValue(1, 99);
+// console.log(myNewLinkedList.insertByIndex(3, 123));
+// console.log(myNewLinkedList.insertByIndex(200, 140));
+// console.log('tail:', myNewLinkedList.tail);
+
+// myNewLinkedList.insertByValue(140, 141);
+// console.log('tail:', myNewLinkedList.tail);
+// console.log(myNewLinkedList.lookup(80));
+// console.log(myNewLinkedList.lookup(123));
+// console.log(myNewLinkedList.removeByIndex(3));
+// console.log(myNewLinkedList.removeByIndex(0));
+// console.log(myNewLinkedList.head);
+// console.log(myNewLinkedList.removeByValue(3));
+// console.log(myNewLinkedList.removeByValue(1));
+// console.log(myNewLinkedList.lookup(3));
+// console.log(myNewLinkedList.removeByValue(141));
+// console.log('tail:', myNewLinkedList.tail);
+// console.log(myNewLinkedList.removeByIndex(6));
+// console.log('tail:', myNewLinkedList.tail);
