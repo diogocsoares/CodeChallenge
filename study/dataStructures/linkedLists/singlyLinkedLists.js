@@ -184,6 +184,35 @@ class LinkedList {
       }
       return array;
    }
+
+   reverse() {
+      if (this.length === 1)
+         return this.printList();
+      let currentNode = this.head;
+      let reversedLinkedList = new LinkedList(currentNode.value);
+      while (currentNode.next !== null) {
+         currentNode = currentNode.next;
+         reversedLinkedList.prepend(currentNode.value);
+      }
+      return reversedLinkedList.printList();
+   }
+
+   reverse2() {
+      if (this.length === 1)
+         return this.printList();
+      let first = this.head;
+      let second = this.head.next;
+      this.tail = this.head;
+      while (second) {
+         const holdNode = second.next;
+         second.next = first;
+         first = second;
+         second = holdNode;
+      }
+      this.head.next = null;
+      this.head = first;
+      return this.printList();
+   }
 };
 
 const myNewLinkedList = new LinkedList(10);
@@ -212,4 +241,6 @@ console.log(myNewLinkedList.lookup(3));
 console.log(myNewLinkedList.removeByValue(141));
 console.log('tail:', myNewLinkedList.tail);
 console.log(myNewLinkedList.removeByIndex(6));
-console.log('tail:', myNewLinkedList.tail);
+//console.log('tail:', myNewLinkedList.tail);
+console.log(myNewLinkedList.reverse())
+console.log(myNewLinkedList.reverse2())
