@@ -244,3 +244,5 @@ console.log(myNewLinkedList.removeByIndex(6));
 //console.log('tail:', myNewLinkedList.tail);
 console.log(myNewLinkedList.reverse())
 console.log(myNewLinkedList.reverse2())
+
+module.exports = LinkedList;
