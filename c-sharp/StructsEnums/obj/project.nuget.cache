@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "cmAkPfO7im1TxpTcb2N4e7Hipyp1463b3oMFi2szJJc4rUHYGEpq+GLitgrfmxqFCO0AG6q7Rpxx6Mt5Qux5jg==",
+  "dgSpecHash": "sbTyLRwgNlGZvz9PHZKoOBFBBTeUzzBmKOOS09h+aPryLycCRd7y2cEsOImvMsKbU+osmHDgxFcoGf8dx54V2g==",
   "success": true,
-  "projectFilePath": "C:\\src\\code-challenge\\c-sharp\\StructsEnums\\StructsEnums.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/diogosoares/dev/code-challenge/c-sharp/StructsEnums/StructsEnums.csproj",
+  "expectedPackageFiles": [
+    "/Users/diogosoares/.nuget/packages/microsoft.netcore.app.ref/5.0.0/microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "/Users/diogosoares/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "/Users/diogosoares/.nuget/packages/microsoft.netcore.app.host.osx-x64/5.0.16/microsoft.netcore.app.host.osx-x64.5.0.16.nupkg.sha512"
+  ],
   "logs": []
 }
