@@ -1,0 +1,16 @@
+C:\src\code-challenge\c-sharp\Currency\obj\Debug\net5.0\Currency.csproj.AssemblyReference.cache
+C:\src\code-challenge\c-sharp\Currency\obj\Debug\net5.0\Currency.GeneratedMSBuildEditorConfig.editorconfig
+C:\src\code-challenge\c-sharp\Currency\obj\Debug\net5.0\Currency.AssemblyInfoInputs.cache
+C:\src\code-challenge\c-sharp\Currency\obj\Debug\net5.0\Currency.AssemblyInfo.cs
+C:\src\code-challenge\c-sharp\Currency\obj\Debug\net5.0\Currency.csproj.CoreCompileInputs.cache
+C:\src\code-challenge\c-sharp\Currency\bin\Debug\net5.0\Currency.exe
+C:\src\code-challenge\c-sharp\Currency\bin\Debug\net5.0\Currency.deps.json
+C:\src\code-challenge\c-sharp\Currency\bin\Debug\net5.0\Currency.runtimeconfig.json
+C:\src\code-challenge\c-sharp\Currency\bin\Debug\net5.0\Currency.runtimeconfig.dev.json
+C:\src\code-challenge\c-sharp\Currency\bin\Debug\net5.0\Currency.dll
+C:\src\code-challenge\c-sharp\Currency\bin\Debug\net5.0\ref\Currency.dll
+C:\src\code-challenge\c-sharp\Currency\bin\Debug\net5.0\Currency.pdb
+C:\src\code-challenge\c-sharp\Currency\obj\Debug\net5.0\Currency.dll
+C:\src\code-challenge\c-sharp\Currency\obj\Debug\net5.0\ref\Currency.dll
+C:\src\code-challenge\c-sharp\Currency\obj\Debug\net5.0\Currency.pdb
+C:\src\code-challenge\c-sharp\Currency\obj\Debug\net5.0\Currency.genruntimeconfig.cache
