@@ -8,7 +8,7 @@ namespace containDuplicate
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Type a sequence of numbers seppared with an space");
+            Console.WriteLine("Type a sequence of numbers separated with an space");
             string[] sNumbers = Console.ReadLine().Split(' ');
             int[] nums = Array.ConvertAll<string, int> (sNumbers, int.Parse);
             Console.WriteLine($" Contain Duplicate HashSet: {containDuplicateV1(nums).ToString()}");
