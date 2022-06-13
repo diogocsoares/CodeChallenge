@@ -17,6 +17,15 @@ namespace Arrays
             myArrayStruct[0].Id = 15;
             myArrayStruct[1].Id = 22;
             Console.WriteLine(myArrayStruct[0].Id);
+
+            for (int i = 0; i < myArray2.Length; i++)
+                Console.WriteLine(myArray2[i]);
+
+            foreach (var item in myArray2)
+                Console.WriteLine(item);
+
+            foreach (var item in myArrayStruct)
+                Console.WriteLine(item.Id);        
             
         }
 
