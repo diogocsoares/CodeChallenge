@@ -30,7 +30,7 @@
          "skipFiles": [
             "<node_internals>/**"
          ],
-         "program": "${workspaceFolder}/study/dataStructures/trees/binarySearchTrees.js"
+         "program": "${workspaceFolder}/study/algorithms/essential.js"
       }
    ]
 }

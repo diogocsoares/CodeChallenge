@@ -4,8 +4,15 @@
 // Directed: These type of graphs you can go in only one way. Twitter is a example, you can follow but they cannot follow you automatically.
 // Undirected: These types of graphs are used for describing traffic flow. You can go in both directions. Facebook is a example, friendship is in both ways.
 // Acyclic graph: There is now way to came back to an node.
-//Cyclic: There is a way to came back to an node.
-// Weighted: The edges have weighted.
+// Cyclic: There is a way to came back to an node. We have edges connected in a circular fashion.
+// Weighted: The edges (connections) have weighted.
+// Unweighted: the edges don't have weight.
+
+// DAG is a fancy word to named Directed Acyclic Graph.
+
+//Tool to build complex graphs neo4j
+
+//Edge list
 
 /*
       2 ---0
@@ -13,7 +20,8 @@
     1   3
 */
 
-//Edge list
+
+
 const edgeGraph = [[0, 2], [2, 3], [2, 1], [1, 3]]; //The array have the connections. An edge list simply show us the connections./
 
 //Adjacent list
@@ -29,7 +37,7 @@ const adjacentMatrixGraph = [
    [0, 0, 1, 1],
    [1, 1, 0, 1],
    [0, 1, 1, 0]
-];
+]; //This way each index of the external and internal array define the node's value.
 
 const adjacentMatrixGraphObject = {
    0: [0, 0, 1, 0],
@@ -46,13 +54,53 @@ class Graph {
       this.adjacentList = {};
    }
 
-   addVertex(node) {
+   addVertex(node) { // A vertex can be called node.
       //undirected graph
+      if (this.numberOfNodes === 0) {
+         this.adjacentList[0] = [];
+         this.numberOfNodes++;
+         return true;
+      }
+      let vertex = this.adjacentList[node];
+      if (vertex) {
+         return false;
+      }
+      else {
+         this.adjacentList[node] = [];
+         this.numberOfNodes++;
+         return true;
+      }
+   }
+
+   addVertexSimpleWay(node) {
+      this.adjacentList[node] = [];
+      this.numberOfNodes++;
    }
 
    addEdges(node1, node2) {
       //undirected graph
+      if (this.numberOfNodes === 0)
+         return false;
+      let vertex1 = this.adjacentList[node1];
+      let vertex2 = this.adjacentList[node2];
+      let edge;
+      if (vertex1) {
+         for (edge of vertex1) {
+            if (edge === node2)
+               return false
+         }
+         vertex1.push(node2);
+         vertex2.push(node1);
+      } else {
+         return false;
+      }
    }
+
+   addEdgesSimpleWay(node1, node2) {
+      this.adjacentList[node1].push(node2);
+      this.adjacentList[node2].push(node1);
+   }
+
 
    showConnections() {
       const allNodes = Object.keys(this.adjacentList);
@@ -67,3 +115,26 @@ class Graph {
       }
    }
 }
+
+const myGraph = new Graph();
+
+myGraph.addVertex('0');
+myGraph.addVertex('1');
+myGraph.addVertex('2');
+myGraph.addVertex('3');
+myGraph.addVertex('4');
+myGraph.addVertex('5');
+myGraph.addVertex('6');
+
+myGraph.addEdges('3', '1');
+myGraph.addEdges('3', '4');
+myGraph.addEdges('4', '2');
+myGraph.addEdges('4', '5');
+myGraph.addEdges('1', '2');
+myGraph.addEdges('1', '0');
+myGraph.addEdges('0', '2');
+myGraph.addEdges('6', '5');
+myGraph.addEdges('6', '5');
+//myGraph.addEdgesSimpleWay('6', '5');
+
+myGraph.showConnections();
