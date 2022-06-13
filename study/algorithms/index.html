@@ -8,24 +8,16 @@
 <body>
    <h1>Console debugging</h1>
    <script>
-      var H = (function () {
-         function User(name) {
-         this.name = name;
-      }
-
-      var m = function () {
-         return "Hello " + this.name;
-      };
-
-      User.prototype.doGreeting = m;
-
-      return User;
-      })();
-
-      var j = new H("Uncle Bob");
-
-      console.log(j);
-      console.log(j.doGreeting());
+let counter = 0;
+function inception() {
+   //debugger // This add a debug in console.
+   if (counter > 3) {
+      return 'done';
+   }
+   counter++;
+   // inception(); this will not return anything because only the last call will return, but other calls return undefined. to solve this must add return inception that will put the entire function on the call stack instead only the return value.
+   return inception();
+}
    </script>
 </body>
 </html>
