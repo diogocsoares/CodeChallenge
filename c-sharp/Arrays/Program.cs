@@ -17,6 +17,7 @@ namespace Arrays
             myArrayStruct[0].Id = 15;
             myArrayStruct[1].Id = 22;
             Console.WriteLine(myArrayStruct[0].Id);
+
             
         }
 
