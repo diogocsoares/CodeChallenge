@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "/Users/diogosoares/.nuget/packages/": {}
+    "C:\\Users\\dsoares2\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/containDuplicate.csproj",
+      "projectUniqueName": "C:\\src\\code-challenge\\c-sharp\\containDuplicate\\containDuplicate.csproj",
       "projectName": "containDuplicate",
-      "projectPath": "/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/containDuplicate.csproj",
-      "packagesPath": "/Users/diogosoares/.nuget/packages/",
-      "outputPath": "/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/",
+      "projectPath": "C:\\src\\code-challenge\\c-sharp\\containDuplicate\\containDuplicate.csproj",
+      "packagesPath": "C:\\Users\\dsoares2\\.nuget\\packages\\",
+      "outputPath": "C:\\src\\code-challenge\\c-sharp\\containDuplicate\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/diogosoares/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\dsoares2\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -53,26 +53,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.osx-x64",
-            "version": "[5.0.16, 5.0.16]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

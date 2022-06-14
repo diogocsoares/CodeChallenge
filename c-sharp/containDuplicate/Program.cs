@@ -6,8 +6,7 @@ namespace containDuplicate
 {
     class Program
     {
-        static void Main(string[] args)
-        {
+        static void Main(string[] args) {
             Console.WriteLine("Type a sequence of numbers separated with an space");
             string[] sNumbers = Console.ReadLine().Split(' ');
             int[] nums = Array.ConvertAll<string, int> (sNumbers, int.Parse);
@@ -15,7 +14,6 @@ namespace containDuplicate
             Console.WriteLine($" Contain Duplicate ICollection: {containDuplicateV2(nums).ToString()}");
             Console.WriteLine($" Contain Duplicate HashSet2: {containDuplicateV3(nums).ToString()}");
             Console.WriteLine($" Contain Duplicate Queue: {containDuplicateV4(nums).ToString()}");
-
         }
 
         static Boolean containDuplicateV1 (int[] nums) {
@@ -27,11 +25,10 @@ namespace containDuplicate
             ICollection<int> uniqueV2 = new List<int>();
             uniqueV2.Add(nums[0]);
             for (int i = 1; i < nums.Length; i++) {
-                if (uniqueV2.Contains(nums[i])) {
+                if (uniqueV2.Contains(nums[i]))
                     return true;
-                } else {
+                else 
                     uniqueV2.Add(nums[i]);
-                }
             }
             return false;
         }
@@ -39,11 +36,11 @@ namespace containDuplicate
         static bool containDuplicateV3 (int[] nums) {
             var uniqueV3 = new HashSet<int>();
             if (nums.Length <= 1 ) return false;
-            for (int i = 0; i < nums.Length; i++) {
-                if (uniqueV3.Contains(nums[i])) 
+            foreach (var item in nums) {
+                if (uniqueV3.Contains(item)) 
                     return true;
                 else
-                    uniqueV3.Add(nums[i]);
+                    uniqueV3.Add(item);
             }
             return false;
         }
