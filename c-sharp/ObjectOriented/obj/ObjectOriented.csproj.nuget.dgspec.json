@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\src\\code-challenge\\c-sharp\\containDuplicate\\containDuplicate.csproj": {}
+    "C:\\src\\code-challenge\\c-sharp\\ObjectOriented\\ObjectOriented.csproj": {}
   },
   "projects": {
-    "C:\\src\\code-challenge\\c-sharp\\containDuplicate\\containDuplicate.csproj": {
+    "C:\\src\\code-challenge\\c-sharp\\ObjectOriented\\ObjectOriented.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\src\\code-challenge\\c-sharp\\containDuplicate\\containDuplicate.csproj",
-        "projectName": "containDuplicate",
-        "projectPath": "C:\\src\\code-challenge\\c-sharp\\containDuplicate\\containDuplicate.csproj",
+        "projectUniqueName": "C:\\src\\code-challenge\\c-sharp\\ObjectOriented\\ObjectOriented.csproj",
+        "projectName": "ObjectOriented",
+        "projectPath": "C:\\src\\code-challenge\\c-sharp\\ObjectOriented\\ObjectOriented.csproj",
         "packagesPath": "C:\\Users\\dsoares2\\.nuget\\packages\\",
-        "outputPath": "C:\\src\\code-challenge\\c-sharp\\containDuplicate\\obj\\",
+        "outputPath": "C:\\src\\code-challenge\\c-sharp\\ObjectOriented\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dsoares2\\AppData\\Roaming\\NuGet\\NuGet.Config"
