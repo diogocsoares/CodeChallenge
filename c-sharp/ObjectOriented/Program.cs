@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace ObjectOriented
 {
     class Program
@@ -7,6 +6,8 @@ namespace ObjectOriented
         static void Main(string[] args)
         {
             Console.Clear();
+            Console.WriteLine("\n===== START =====\n");
+            Console.WriteLine("===== CREATING A SIMPLE CLASS =====");
             var simpleClass = new SimpleClass(); //As a reference type it will create an instance object in the Heap memory and point to the variable customerSimple in the stack memory.
             simpleClass.FirstName = "Diogo";
             simpleClass.LastName  = "Soares";
@@ -15,7 +16,9 @@ namespace ObjectOriented
             Console.WriteLine($"My name is: {simpleClass.FirstName} {simpleClass.LastName} and I have {simpleClass.Age.ToString()} years old");
             simpleClass.AnMethod();
             //simpleClass.AnInternalMethod(); Don't wort because is private;
+            Console.WriteLine("---------------------------------------------------------\n");
 
+            Console.WriteLine("===== INHERITED =====");
             var childClass = new ChildClassOfSimpleClass();
             childClass.FirstName = "Carla";
             childClass.LastName = "Soares";
@@ -24,28 +27,64 @@ namespace ObjectOriented
 
             Console.WriteLine($"My name is: {childClass.FirstName} {childClass.LastName} and I have an special property {childClass.PropertyOfChild}");
             childClass.AnMethod(); //Have the same object.
-
+            Console.WriteLine("");
             var childClassCalledBaseConstructor = new ChildClassOfSimpleClass(true);
+            Console.WriteLine("---------------------------------------------------------\n");
 
+            Console.WriteLine("===== POLYMORPHISM =====");
             var polymorphicClass = new PolymorphicChildClass();
             simpleClass.MethodCanBeOverrideOnChild();
             polymorphicClass.MethodCanBeOverrideOnChild();
             polymorphicClass.MethodCallParentClass();
+            Console.WriteLine("---------------------------------------------------------\n");
 
+            Console.WriteLine("===== USING CLASS AS COMPLEX TYPES =====");
             var typeComplex = new UsingComplexTypesCreated(1580);
             var typeComplexParameterLess = new UsingComplexTypesCreated();
             typeComplex.MyTypeComplex.FirstName = "First name Complex";
             Console.WriteLine(typeComplex.MyTypeComplex.FirstName);
+            Console.WriteLine("---------------------------------------------------------\n");
 
+            Console.WriteLine("===== CREATING PROPERTIES =====");
             var labProperties = new BetterWayToCreateProperties();
             labProperties.MyPropertyFull = "Set an value";
             string reading = labProperties.MyPropertyFull;
+            Console.WriteLine("---------------------------------------------------------\n");
 
+            Console.WriteLine("===== USING METHODS =====");
             var allMethods = new AllFormsOfMethods();
             allMethods.DifferentSignatures("With one parameter");
             allMethods.DifferentSignatures("With two parameters", 182);
             allMethods.DifferentSignatures("With two parameters", true);
             allMethods.DifferentSignatures("With two parameters", false);
+            Console.WriteLine("---------------------------------------------------------\n");
+
+            Console.WriteLine("===== DESTROY OBJECTS =====");
+            var createDestroyObject = new HowGarbageCollectorWorks();
+            createDestroyObject.Dispose();
+            //The approach above depend of the use of method Dispose, the object only will be destroyed throw a calling of method dispose.
+            //To force an destruction can be use the approach bellow.
+            using (var forceCreateDestroyObject = new HowGarbageCollectorWorks()){
+                Console.WriteLine(" --- > Do it after destroy the object");
+            }
+            Console.WriteLine("---------------------------------------------------------\n");
+
+            Console.WriteLine("===== STATIC CLASSES =====");
+            //var myStaticClass = new ClassNoInstanceAble(); // It is not valid because is a static class.
+            ClassNoInstanceAble.DoYourJOb();
+            ClassNoInstanceAble.MyStaticProperty = "Un static class can have properties";
+            Console.WriteLine(ClassNoInstanceAble.MyStaticProperty);
+            Console.WriteLine("---------------------------------------------------------\n");
+
+            Console.WriteLine("===== PARTIAL CLASSES =====");
+            var partialClassUnified = new ClassDividedInTwoParts();
+            partialClassUnified.PropPart1 = "Is the same object but divided in parts";
+            partialClassUnified.MethodInPart01();
+            partialClassUnified.MethodInPart02();
+            Console.WriteLine("---------------------------------------------------------\n");
+
+            Console.WriteLine("===== END =====\n");
+
         }
         
         //Access modifiers: Placed in the start of declaration.
@@ -107,6 +146,7 @@ namespace ObjectOriented
         class UsingComplexTypesCreated {
             public SimpleClass MyTypeComplex;
             public int MyProperty { get; set; }
+            
             //Shortcut CTOR: Constructor method;
             public UsingComplexTypesCreated(int myProperty) {
                 MyTypeComplex = new SimpleClass();
@@ -165,5 +205,31 @@ namespace ObjectOriented
             }
         }
 
+        class HowGarbageCollectorWorks :IDisposable {
+            //To call directly we can use GC.Collect but it is not recommended because it is a automatic process.
+            //To force destroy we have to implement an interface called IDisposable. (CTRL . to implement it) 
+            public HowGarbageCollectorWorks() {
+                Console.WriteLine("The object was created");
+            }
+
+            public void Dispose() {
+                Console.WriteLine("The object was destructed");
+            }
+        }
+
+        public static class ClassNoInstanceAble {
+            //Static class are single instance and automatically created when the application starts.
+            public static string MyStaticProperty { get; set; }
+
+            public static void DoYourJOb() {
+                Console.WriteLine("I did my job");
+            }
+        }
+
+        public sealed class ClassCanNotBeExtended {
+            //This is a way to protect the class to modified pro other programmer. Need to be used in specific cases.
+        }
     }
+    
+
 }
