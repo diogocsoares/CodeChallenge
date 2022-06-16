@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace ObjectOriented
 {
     class Program
@@ -164,7 +165,12 @@ namespace ObjectOriented
             context.Save(dog);
             context2.Save(man);
             context3.Save(dogA);
+            Console.WriteLine("---------------------------------------------------------\n");
 
+            Console.WriteLine("===== LISTS ======");
+
+            var labLists = new LabLists();
+            labLists.TestList();
             Console.WriteLine("===== END =====\n");
 
         }
