@@ -111,6 +111,7 @@ namespace ObjectOriented
             dog.Breath();
             Console.WriteLine($"I have {dog.Age.ToString()} years old");
             Console.WriteLine($"AM I Alive? {dog.AMIAlive}");
+            dog.suckle();
             Console.WriteLine("===== END =====\n");
 
         }
