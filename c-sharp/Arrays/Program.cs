@@ -26,7 +26,6 @@ namespace Arrays
 
             foreach (var item in myArrayStruct)
                 Console.WriteLine(item.Id);        
-            
         }
 
         struct ObjStructArray
