@@ -89,8 +89,28 @@ namespace ObjectOriented
             interfaceImplemented.Jump(5);
             interfaceImplemented.Jump(11);
             interfaceImplemented.PropertyForContract = "Value for first property implemented";
-            Console.WriteLine($"{interfaceImplemented.SaySomeThing()} said twice because the interface return the same");
+            Console.WriteLine($"{interfaceImplemented.SaySomeThing()} said twice because the interface return the same sentence");
 
+            Console.WriteLine("===== ABSTRACT CLASS =====");
+            //var serer = new Seres(); //It will not work because we can't create an object for an abstract class.
+            var man = new HumanBean( new DateTime(1980, 01, 24));
+            man.Talk();
+            man.Breath();
+            Console.WriteLine($"I have {man.Age.ToString()} years old");
+            Console.WriteLine($"AM I Alive? {man.AMIAlive}");
+            //man.Deceased = DateTime.Now; //Don't work because set is private.
+            man.Death(DateTime.Now);
+            Console.WriteLine($"AM I Alive? {man.AMIAlive}");
+
+            Console.WriteLine("");
+            //var dog = new Animals(new DateTime(2020, 01, 24)); //Don't work is an abstract class
+            var dog = new Mammals("Dog", new DateTime(2020, 01, 24));
+            dog.NumberOfPaws = 4;
+            Console.WriteLine($"I am a {dog.Specie} and I have {dog.NumberOfPaws} paws");
+            //dog.Talk(); //Don't work because only HumanBean can talk;
+            dog.Breath();
+            Console.WriteLine($"I have {dog.Age.ToString()} years old");
+            Console.WriteLine($"AM I Alive? {dog.AMIAlive}");
             Console.WriteLine("===== END =====\n");
 
         }

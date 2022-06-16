@@ -2,13 +2,12 @@ using System;
 namespace ObjectOriented {
 
     public interface IContractForClass {
-        //An interface is like a contract that define which a class must do or implement. It can be, properties, methods, events that one class must implement. As happens with enum should be named starting with I in uppercase. Un interface should never contain any implementation.
+        //An interface is like a contract that define which a class must do or implement. It can be, properties, methods, events that one class must implement. As happens with enum should be named starting with I in uppercase. Un interface should never contain any implementation. Shortcut CTRL . option implement interface.
 
         public string PropertyForContract { get; set; }
         public int OtherProperty { get; set; }
 
         public void Jump (int timesToJump);
-
         public string SaySomeThing ();
     }
 
@@ -26,7 +25,6 @@ namespace ObjectOriented {
         public string SaySomeThing() {
             var sentence = "I can jump many times as you wish";
             Console.WriteLine(PropertyForContract);
-            Console.WriteLine(OtherProperty.ToString());
             Console.WriteLine(sentence);
             return sentence;
         }
