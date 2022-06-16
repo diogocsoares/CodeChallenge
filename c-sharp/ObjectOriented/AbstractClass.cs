@@ -72,9 +72,10 @@ namespace ObjectOriented {
         public Mammals(string specie, DateTime birthDay ) :base(birthDay) {
             Specie = specie;
         }
-
         public void suckle () {
             Console.WriteLine("Im sucking milk");
         }
+
+        public delegate void Protect(string name);
     } 
 }

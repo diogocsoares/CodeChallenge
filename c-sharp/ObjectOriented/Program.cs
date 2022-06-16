@@ -136,7 +136,11 @@ namespace ObjectOriented
             var dogB = new Animals(new DateTime(2020, 01, 24));
             Console.WriteLine(dogA == dogB); //Are reference type pointing to distinct position in memory.
             Console.WriteLine(dogA.Equals(dogB)); //Implementing interface IEquatable
+            Console.WriteLine("---------------------------------------------------------\n");
 
+            Console.WriteLine("===== DELEGATES =====");
+            var protector = new Mammals.Protect(ClassNoInstanceAble.ProtectAnimals);
+            protector("Ninita");
             Console.WriteLine("---------------------------------------------------------\n");
 
             Console.WriteLine("===== END =====\n");
@@ -278,6 +282,10 @@ namespace ObjectOriented
 
             public static void DoYourJOb() {
                 Console.WriteLine("I did my job");
+            }
+
+            public static void ProtectAnimals(string name) {
+            Console.WriteLine($"Don't worry {name} you are protected");
             }
         }
 
