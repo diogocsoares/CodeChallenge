@@ -123,12 +123,19 @@ namespace ObjectOriented
             Console.WriteLine($"I am a Dog created with upcast");
             dogIsMammalAndAnimal.Breath();
 
-            var MyAnimal = new Animals(new DateTime(2020, 01, 24));
+            var myAnimal = new Animals(new DateTime(2020, 01, 24));
             //MyAnimal = dogIsMammalAndAnimal; //Will not work Cannot implicitly convert type 'ObjectOriented.Animals' to 'ObjectOriented.Mammals'.
-            MyAnimal = (Animals)dogIsMammalAndAnimal;  //Downcast need to specify. Cast in the same level is impossible, only upper or down.
+            myAnimal = (Animals)dogIsMammalAndAnimal;  //Downcast need to specify. Cast in the same level is impossible, only upper or down.
             Console.WriteLine("I am an animal but before I was an dog");
-            Console.WriteLine($"I have {MyAnimal.Age.ToString()} years old my age still the same");
+            Console.WriteLine($"I have {myAnimal.Age.ToString()} years old my age still the same");
 
+            Console.WriteLine("---------------------------------------------------------\n");
+
+            Console.WriteLine("===== COMPARE OBJECTS =====");
+            var dogA = new Animals(new DateTime(2020, 01, 24));
+            var dogB = new Animals(new DateTime(2020, 01, 24));
+            Console.WriteLine(dogA == dogB); //Are reference type pointing to distinct position in memory.
+            Console.WriteLine(dogA.Equals(dogB)); //Implementing interface IEquatable
 
             Console.WriteLine("---------------------------------------------------------\n");
 

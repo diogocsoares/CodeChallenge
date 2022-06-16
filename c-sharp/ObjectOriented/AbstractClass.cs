@@ -56,12 +56,16 @@ namespace ObjectOriented {
          }
     }
 
-    public class Animals : Seres, IAnimals {
+    public class Animals : Seres, IAnimals, IEquatable<Animals> {
         public int NumberOfPaws { get; set; }
         public string Specie { get; set; }
         public Animals(DateTime birthDay) :base(birthDay) {
 
         }
+        public bool Equals(Animals otherAnimal) {
+            return Age == otherAnimal.Age;
+        }
+
     }
 
     public class Mammals : Animals {
