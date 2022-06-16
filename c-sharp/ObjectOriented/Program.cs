@@ -83,6 +83,14 @@ namespace ObjectOriented
             partialClassUnified.MethodInPart02();
             Console.WriteLine("---------------------------------------------------------\n");
 
+            Console.WriteLine("===== INTERFACES =====");
+            var interfaceImplemented = new Person();
+            interfaceImplemented.OtherProperty = 10;
+            interfaceImplemented.Jump(5);
+            interfaceImplemented.Jump(11);
+            interfaceImplemented.PropertyForContract = "Value for first property implemented";
+            Console.WriteLine($"{interfaceImplemented.SaySomeThing()} said twice because the interface return the same");
+
             Console.WriteLine("===== END =====\n");
 
         }
@@ -159,7 +167,6 @@ namespace ObjectOriented
                 MyTypeComplex = new SimpleClass();
                 Console.WriteLine($"The object UsingComplexTypesCreated and SimpleClass for the constructor parameterless");
             }
-
 
         }
 
