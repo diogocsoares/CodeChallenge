@@ -156,6 +156,15 @@ namespace ObjectOriented
 
             Console.WriteLine("---------------------------------------------------------\n");
 
+            Console.WriteLine("===== GENERICS =====");
+            var context = new DataContext<Mammals, Animals>();
+            var context2 = new DataContext<HumanBean, Animals>();
+            var context3 = new DataContext<Mammals, Animals>();
+            //var context4 = new DataContext<Mammals, HumanBean>(); //Will raise error because  where A : Animals defined for this generic type.
+            context.Save(dog);
+            context2.Save(man);
+            context3.Save(dogA);
+
             Console.WriteLine("===== END =====\n");
 
         }
