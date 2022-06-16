@@ -143,6 +143,19 @@ namespace ObjectOriented
             protector("Ninita");
             Console.WriteLine("---------------------------------------------------------\n");
 
+            Console.WriteLine("===== EVENTS =====");
+            var room = new Room(3);
+            room.RoomSoldOutEvent += ClassNoInstanceAble.OnRoomSoldOut;
+            room.ReserveSeat();
+            room.ReserveSeat();
+            room.ReserveSeat();
+            room.ReserveSeat();
+            room.ReserveSeat();
+            room.ReserveSeat();
+            room.ReserveSeat();
+
+            Console.WriteLine("---------------------------------------------------------\n");
+
             Console.WriteLine("===== END =====\n");
 
         }
@@ -286,6 +299,10 @@ namespace ObjectOriented
 
             public static void ProtectAnimals(string name) {
             Console.WriteLine($"Don't worry {name} you are protected");
+            }
+
+            public static void OnRoomSoldOut(object sender, EventArgs e) {
+                Console.WriteLine("Room is full");
             }
         }
 
