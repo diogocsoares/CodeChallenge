@@ -90,6 +90,7 @@ namespace ObjectOriented
             interfaceImplemented.Jump(11);
             interfaceImplemented.PropertyForContract = "Value for first property implemented";
             Console.WriteLine($"{interfaceImplemented.SaySomeThing()} said twice because the interface return the same sentence");
+            Console.WriteLine("---------------------------------------------------------\n");
 
             Console.WriteLine("===== ABSTRACT CLASS =====");
             //var serer = new Seres(); //It will not work because we can't create an object for an abstract class.
@@ -112,6 +113,25 @@ namespace ObjectOriented
             Console.WriteLine($"I have {dog.Age.ToString()} years old");
             Console.WriteLine($"AM I Alive? {dog.AMIAlive}");
             dog.suckle();
+            Console.WriteLine("---------------------------------------------------------\n");
+
+            Console.WriteLine("===== UPCAST DOWNCAST =====");
+            //Upcast.
+            
+            var dogIsMammalAndAnimal = new Animals(new DateTime(2020, 01, 24)); //Base class
+            dogIsMammalAndAnimal = new Mammals("Dog", new DateTime(2020, 01, 24)); //Child class has all parent properties can be interchange. An Mammal is an Animal.
+            Console.WriteLine($"I am a Dog created with upcast");
+            dogIsMammalAndAnimal.Breath();
+
+            var MyAnimal = new Animals(new DateTime(2020, 01, 24));
+            //MyAnimal = dogIsMammalAndAnimal; //Will not work Cannot implicitly convert type 'ObjectOriented.Animals' to 'ObjectOriented.Mammals'.
+            MyAnimal = (Animals)dogIsMammalAndAnimal;  //Downcast need to specify. Cast in the same level is impossible, only upper or down.
+            Console.WriteLine("I am an animal but before I was an dog");
+            Console.WriteLine($"I have {MyAnimal.Age.ToString()} years old my age still the same");
+
+
+            Console.WriteLine("---------------------------------------------------------\n");
+
             Console.WriteLine("===== END =====\n");
 
         }

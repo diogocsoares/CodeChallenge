@@ -56,7 +56,7 @@ namespace ObjectOriented {
          }
     }
 
-    public abstract class Animals : Seres, IAnimals {
+    public class Animals : Seres, IAnimals {
         public int NumberOfPaws { get; set; }
         public string Specie { get; set; }
         public Animals(DateTime birthDay) :base(birthDay) {
