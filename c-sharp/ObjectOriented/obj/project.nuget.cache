@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "iBzBzSZ9Rw3FNRSDAsxQQUAfrfe3cZtdrPjbbbCDQoratTM0FhPkX4iidsoFcZATt8Ziexkp6zQ72YwNDaoodA==",
+  "dgSpecHash": "QrNtaCKclyLWdlC2MthIU65upwO8lsIDrx3oZaRahbcNNyt2wEYxH4cVJ5iAAw3Adavg4eq0ViybGze3+Nfntw==",
   "success": true,
-  "projectFilePath": "C:\\src\\code-challenge\\c-sharp\\ObjectOriented\\ObjectOriented.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/diogosoares/dev/code-challenge/c-sharp/ObjectOriented/ObjectOriented.csproj",
+  "expectedPackageFiles": [
+    "/Users/diogosoares/.nuget/packages/microsoft.netcore.app.ref/5.0.0/microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "/Users/diogosoares/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "/Users/diogosoares/.nuget/packages/microsoft.netcore.app.host.osx-x64/5.0.16/microsoft.netcore.app.host.osx-x64.5.0.16.nupkg.sha512"
+  ],
   "logs": []
 }

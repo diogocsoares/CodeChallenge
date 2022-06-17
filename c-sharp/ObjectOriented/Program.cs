@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace ObjectOriented
 {
     class Program
@@ -143,6 +144,33 @@ namespace ObjectOriented
             protector("Ninita");
             Console.WriteLine("---------------------------------------------------------\n");
 
+            Console.WriteLine("===== EVENTS =====");
+            var room = new Room(3);
+            room.RoomSoldOutEvent += ClassNoInstanceAble.OnRoomSoldOut;
+            room.ReserveSeat();
+            room.ReserveSeat();
+            room.ReserveSeat();
+            room.ReserveSeat();
+            room.ReserveSeat();
+            room.ReserveSeat();
+            room.ReserveSeat();
+
+            Console.WriteLine("---------------------------------------------------------\n");
+
+            Console.WriteLine("===== GENERICS =====");
+            var context = new DataContext<Mammals, Animals>();
+            var context2 = new DataContext<HumanBean, Animals>();
+            var context3 = new DataContext<Mammals, Animals>();
+            //var context4 = new DataContext<Mammals, HumanBean>(); //Will raise error because  where A : Animals defined for this generic type.
+            context.Save(dog);
+            context2.Save(man);
+            context3.Save(dogA);
+            Console.WriteLine("---------------------------------------------------------\n");
+
+            Console.WriteLine("===== LISTS ======");
+
+            var labLists = new LabLists();
+            labLists.TestList();
             Console.WriteLine("===== END =====\n");
 
         }
@@ -287,6 +315,10 @@ namespace ObjectOriented
             //Function used as delegate on class Mammals
             public static void ProtectAnimals(string name) {
             Console.WriteLine($"Don't worry {name} you are protected");
+            }
+
+            public static void OnRoomSoldOut(object sender, EventArgs e) {
+                Console.WriteLine("Room is full");
             }
         }
 
