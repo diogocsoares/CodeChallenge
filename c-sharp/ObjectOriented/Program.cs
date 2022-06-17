@@ -283,14 +283,15 @@ namespace ObjectOriented
             public static void DoYourJOb() {
                 Console.WriteLine("I did my job");
             }
-
+            
+            //Function used as delegate on class Mammals
             public static void ProtectAnimals(string name) {
             Console.WriteLine($"Don't worry {name} you are protected");
             }
         }
 
         public sealed class ClassCanNotBeExtended {
-            //This is a way to protect the class to modified pro other programmer. Need to be used in specific cases.
+            //This is a way to protect the class to be modified pro other programmer. Need to be used in specific cases.
         }
     }
     
