@@ -25,7 +25,7 @@ namespace ObjectOriented {
 
          var oldDogs = dogs.Where(x => x.Age > 4);
          foreach (var dog in oldDogs) {
-            Console.WriteLine($"I am a {dog.Specie} and I have {dog.Age.ToString()} years old");
+            Console.WriteLine($"I am a {dog.Specie} and I have {dog.Age.ToString()} years old"); //If we omit ToString() it will be called implicit.
          }
          Console.WriteLine("---------------------------------------------------------\n");
       }

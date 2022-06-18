@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "WHZD7gXATgXfbHO87bE9tUQACFE8fmUwuKZ2tSoix6abh/DrniSsH32XVLRRvyLUAlI/bgFa+UXlH0PW/OxpEA==",
+  "dgSpecHash": "OGW7MWAGyNivUD1t/PF3QwgjohdcLEAzTc9lsJNlwpES1d4qWgiO+i+HKGsqlQPpeA3AXA1V7jtsvxYHmNVfJA==",
   "success": true,
-  "projectFilePath": "C:\\src\\code-challenge\\c-sharp\\containDuplicate\\containDuplicate.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/containDuplicate.csproj",
+  "expectedPackageFiles": [
+    "/Users/diogosoares/.nuget/packages/microsoft.netcore.app.ref/5.0.0/microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "/Users/diogosoares/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "/Users/diogosoares/.nuget/packages/microsoft.netcore.app.host.osx-x64/5.0.16/microsoft.netcore.app.host.osx-x64.5.0.16.nupkg.sha512"
+  ],
   "logs": []
 }
