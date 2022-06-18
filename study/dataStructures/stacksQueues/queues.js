@@ -32,17 +32,18 @@ class Queue {
          this.last = node;
       }
       this.length++;
-      return this;
+      return this.last.value;
    }
 
    dequeue() {
+      const node = this.first;
       if (this.length === 0)
          return null;
       if (this.first === this.last)
          this.last = null;
       this.first = this.first.next;
       this.length--;
-      return this.first?.value === undefined ? null : this.first.value;
+      return node.value;
    }
 
    isEmpty() {
@@ -51,10 +52,12 @@ class Queue {
 }
 
 const myQueue = new Queue();
-console.log(myQueue.enqueue('Diogo'));
-console.log(myQueue.enqueue('Carla'));
-console.log(myQueue.enqueue('Daniel'));
-console.log(myQueue.peek(), myQueue.length);
-console.log(myQueue.dequeue(), myQueue.length);
-console.log(myQueue.dequeue(), myQueue.length);
-console.log(myQueue.dequeue(), myQueue.length);
+console.log('Added to the queue: ', myQueue.enqueue('Diogo'));
+console.log('Added to the queue: ', myQueue.enqueue('Carla'));
+console.log('Added to the queue: ', myQueue.enqueue('Daniel'));
+console.log('The first one in the queue is:', myQueue.peek(), 'line length is:', myQueue.length);
+console.log('Call the first one:', myQueue.dequeue(), 'line length is:', myQueue.length);
+console.log('Call the first one:', myQueue.dequeue(), 'line length is:', myQueue.length);
+console.log('Call the first one:', myQueue.dequeue(), 'line length is:', myQueue.length);
+
+module.exports = Queue;

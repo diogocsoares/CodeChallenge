@@ -159,30 +159,30 @@ function traverse(node) {
    return tree;
 }
 
-const tree = new BinarySearchTree();
-tree.insert(9);
-tree.insert(4);
-tree.insert(6);
-tree.insert(20);
-tree.insert(170);
-tree.insert(160);
-tree.insert(166);
-tree.insert(145);
-tree.insert(13);
-tree.insert(15);
-tree.insert(1);
+// const tree = new BinarySearchTree();
+// tree.insert(9);
+// tree.insert(4);
+// tree.insert(6);
+// tree.insert(20);
+// tree.insert(170);
+// tree.insert(160);
+// tree.insert(166);
+// tree.insert(145);
+// tree.insert(13);
+// tree.insert(15);
+// tree.insert(1);
 //tree.remove(170); //don't work can fix
 //console.log(tree.lookup(4));
 
 
-const treeB = new BinarySearchTree();
-treeB.insert(9);
-treeB.insert(4);
-treeB.insert(6);
-treeB.insert(20);
-treeB.insert(13);
-treeB.insert(15);
-treeB.insert(1);
+// const treeB = new BinarySearchTree();
+// treeB.insert(9);
+// treeB.insert(4);
+// treeB.insert(6);
+// treeB.insert(20);
+// treeB.insert(13);
+// treeB.insert(15);
+// treeB.insert(1);
 
 function levels(node) {
    let currentNode = node.root;
@@ -201,12 +201,13 @@ function levels(node) {
    return level;
 }
 
-console.log(levels(tree));
+// console.log(levels(tree));
 
-function areSimilar(nodeA, nodeB) {
-   return levels(nodeA) === levels(nodeB)
-}
+// function areSimilar(nodeA, nodeB) {
+//    return levels(nodeA) === levels(nodeB)
+// }
 
-console.log(areSimilar(tree, tree));
-console.log(JSON.stringify(traverse(tree.root)));
+// console.log(areSimilar(tree, tree));
+// console.log(JSON.stringify(traverse(tree.root)));
 
+module.exports = BinarySearchTree;
