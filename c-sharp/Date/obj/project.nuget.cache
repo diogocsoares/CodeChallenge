@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "V3XbDeEQgN6ayEP/L54eS611hi3b/b/DzIGh5F6EwiYaZuhhv46J7GmV3AF9jJqInDm4s8iOgLfv9vnlF0y0tQ==",
+  "success": true,
+  "projectFilePath": "/Users/diogosoares/dev/code-challenge/c-sharp/Date/Date.csproj",
+  "expectedPackageFiles": [
+    "/Users/diogosoares/.nuget/packages/microsoft.netcore.app.ref/5.0.0/microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "/Users/diogosoares/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "/Users/diogosoares/.nuget/packages/microsoft.netcore.app.host.osx-x64/5.0.16/microsoft.netcore.app.host.osx-x64.5.0.16.nupkg.sha512"
+  ],
+  "logs": []
+}

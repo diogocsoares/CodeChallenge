@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Data
+namespace Date
 {
     class Program
     {
@@ -77,7 +77,7 @@ namespace Data
             Console.WriteLine(globalDateTime);
             Console.WriteLine(globalDateTime.ToLocalTime()); //Convert to UTC to LocalTime.
 
-            var timezoneNewZealand = TimeZoneInfo.FindSystemTimeZoneById("New Zealand Standard Time");
+            var timezoneNewZealand = TimeZoneInfo.FindSystemTimeZoneById("Pacific/Auckland");
             Console.WriteLine(timezoneNewZealand);
             var horaNewZealand = TimeZoneInfo.ConvertTimeFromUtc(globalDateTime, timezoneNewZealand);
             Console.WriteLine(horaNewZealand);
