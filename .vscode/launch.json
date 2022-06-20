@@ -30,7 +30,7 @@
          "skipFiles": [
             "<node_internals>/**"
          ],
-         "program": "${workspaceFolder}/study/algorithms/recursion/recursion.js"
+         "program": "${workspaceFolder}/Week01/wordSearch.js"
       }
    ]
 }
