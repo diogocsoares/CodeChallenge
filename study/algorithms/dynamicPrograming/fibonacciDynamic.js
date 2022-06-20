@@ -33,7 +33,6 @@ const fasterFibonacci = fibonacciMaster();
 console.log(fasterFibonacci(800)); //87
 console.log(calculationsMaster);
 
-
 function fibonacciInteractive(number) {
    let answer = [0, 1];
    for (let i = 2; i <= number; i++)
