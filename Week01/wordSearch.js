@@ -35,107 +35,62 @@
 //if colum is equal to the length - 1 do not test down 
 
 var exist = function (board, word) {
-   let answer = new Object(); // index is equal to word position 0 position word[0]... 
-   let traversalBoard = (board.length >= 1 && board[0].length <= 6);
+   let totLin = board.length;
+   let totCol = board[0].length;
+   let totChar = word.length;
    let currentChar = 0;
-   let line = 0;
-   let colum = 0;
-   while (traversalBoard && currentChar <= word.length && line < board.length) {
-      if (word[currentChar] === board[line][colum]) {
-         answer[currentChar] = [line, colum];
-         console.log(answer[currentChar]);
-         lookAround(currentChar + 1, line, colum);
-         if (Object.keys(answer).length === word.length) {
+   let lin = 0;
+   let col = 0;
+
+   if (totLin > totLin * totCol)
+      return false;
+
+   while (lin < totLin && col < totCol) {
+      if (word[currentChar] === board[lin][col]) {
+         if (findPath(0, lin, col))
             return true;
-         } else {
-            answer = {};
+         else
             moveForward();
-         }
       } else {
          moveForward();
       }
    }
    return false;
 
-   function lookAround(position, foundLine, foundColumn) {
+   function findPath(position, foundLin, foundCol) {
       const left = -1;
       const right = +1;
       const up = -1;
       const down = +1;
-      let found;
-      let border = {
-         up: (foundLine === 0),
-         down: (foundLine === board.length - 1),
-         left: (foundColumn === 0),
-         right: (foundColumn === board[0].length - 1)
-      }
 
-      if (position === word.length)
-         return position;
+      if (totChar === position)
+         return true;
 
-      //Right
-      if (!border.right && !found) {
-         //Test right
-         if (word[position] === board[foundLine][foundColumn + right])
-            found = [foundLine, foundColumn + right];
-      }
-
-      //Down + Right | Down 
-      if (!border.down && !border.right && !found) {
-         if (word[position] === board[foundLine + down][foundColumn + right])
-            found = [foundLine + down, foundColumn + right];
-         if (word[position] === board[foundLine + down][foundColumn])
-            found = [foundLine + down, foundColumn];
-      }
-
-      //Left + Down
-      if (!border.down && !board.left && !found) {
-         if (word[position] === board[foundLine + down][foundColumn + left])
-            found = [foundLine + down, foundColumn + left];
-      }
-
-      //Left
-      if (!border.left && !found) {
-         //Test right
-         if (word[position] === board[foundLine][foundColumn + left])
-            found = [foundLine, foundColumn + left];
-      }
-
-      //Up + Left | UP
-      if (!border.up && !border.left && !found) {
-         if (word[position] === board[foundLine + up][foundColumn + left])
-            found = [foundLine + up, foundColumn + left];
-         if (word[position] === board[foundLine + up][foundColumn])
-            found = [foundLine + up, foundColumn];
-      }
-
-      //UP + Right
-      if (!border.up && !border.right && !found) {
-         if (word[position] === board[foundLine + up][foundColumn + right])
-            found = [foundLine + up, foundColumn + right];
-         if (word[position] === board[foundLine + up][foundColumn])
-            found = [foundLine + dow, foundColumn];
-      }
-      console.log(found);
-      if (found) {
-         answer[position] = [found[0], found[1]];
-         return lookAround(position + 1, found[0], found[1]);
-      } else {
+      if (foundLin < 0 || foundCol < 0 || foundLin >= totLin || foundCol >= totCol)
          return false;
-      }
 
+      if (board[foundLin][foundCol] === word[position]) {
+         let tempChar = board[foundLin][foundCol];
+         board[foundLin][foundCol] = '#';
+
+         let result = findPath(position + 1, foundLin + down, foundCol) |
+            findPath(position + 1, foundLin + up, foundCol) |
+            findPath(position + 1, foundLin, foundCol + left) |
+            findPath(position + 1, foundLin, foundCol + right);
+
+         board[foundLin][foundCol] = tempChar;
+         return result;
+
+      } else
+         return false;
    }
 
    function moveForward() {
-      if (colum < board[line].length - 1) {
-         colum++
-      } else {
-         if (line < board.length) {
-            line++
-            colum = 0;
-         } else {
-            traversalBoard = false;
-         }
+      if (col < totCol - 1) {
+         col++;
+      } else if (lin < totLin) {
+         lin++;
+         col = 0;
       }
    }
 };
@@ -143,53 +98,13 @@ var exist = function (board, word) {
 
 
 //console.log(exist([["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "ABCCED"));
-//console.log(exist([["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "SEE"));
-//console.log(exist([["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "ABCB"));
-
-
-
-
-
-
-
-      //    //console.log(border);
-      //    if (border.up) {
-      //       if (border.left) {
-      //          //console.log('UP y left', position);
-
-
-      //       } else if (border.right) {
-      //          console.log('UP y right', position);
-      //          return found;
-      //       } else {
-      //          console.log('UP', position);
-      //          return found;
-      //       }
-      //    }
-
-
-      // if (border.down) {
-      //    if (border.left) {
-      //       console.log('DOWN y left', position);
-      //       return found;
-      //    } else if (border.right) {
-      //       console.log('DOWN y right', position);
-      //       return found;
-      //    } else {
-      //       console.log('DOWN', position);
-      //       return found;
-      //    }
-      // }
-
-      // if (!border.up && !border.down) {
-      //    if (border.left) {
-      //       console.log('middle Left ', position);
-      //       return found;
-      //    } else if (border.right) {
-      //       console.log('middle right ', position);
-      //       return found;
-      //    } else {
-      //       console.log('middle', position);
-      //       return found;
-      //    }
-      // }
+//console.log(exist([["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "SEE")); //true
+//console.log(exist([["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "ABCB")); //false
+//console.log(exist([["a", "b"], ["c", "d"]], "abdc")); //true
+//console.log(exist([["a", "b"], ["c", "d"]], "abcd")); //False
+//console.log(exist([["a", "b"]], "ab")); //true
+//console.log(exist([["a", "b"], ["c", "d"]], "acdb")); //true
+//console.log(exist([["a", "a"]], "a")); //true
+//console.log(exist([["C", "A", "A"], ["A", "A", "A"], ["B", "C", "D"]], "AAB")); //true
+console.log(exist([["A", "B", "C", "E"], ["S", "F", "E", "S"], ["A", "D", "E", "E"]], "ABCESEEEFS")); //true
+//console.log(exist([["a", "a", "a", "a"], ["a", "a", "a", "a"], ["a", "a", "a", "a"]], "aaaaaaaaaaab")); //true
