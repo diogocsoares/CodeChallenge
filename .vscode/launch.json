@@ -30,7 +30,7 @@
          "skipFiles": [
             "<node_internals>/**"
          ],
-         "program": "${workspaceFolder}/Week01/queueUsingStacks.js"
+         "program": "${workspaceFolder}/Week01/redundantConnection.js"
       }
    ]
 }

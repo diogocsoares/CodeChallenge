@@ -28,6 +28,7 @@ class Queue {
          this.first = node;
          this.last = node;
       } else {
+         // @ts-ignore
          this.last.next = node;
          this.last = node;
       }
