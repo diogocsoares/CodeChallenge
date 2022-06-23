@@ -1,123 +1,74 @@
 // @ts-nocheck
 
 
-class ListNode {
+class CacheNode {
    constructor(key, value) {
-      this.value = value === undefined ? null : value;
-      this.cacheIndex = key;
-      this.previous = null;
+      this.value = value;
+      this.key = key;
+      this.prev = null;
       this.next = null;
    }
 }
 
 class LinkedList {
    constructor() {
-      this.head = null;
-      this.tail = null;
-      this.length = 0;
+      this.head = new CacheNode('h', 'head');
+      this.tail = new CacheNode('t', 'tail');
+      this.head.next = this.tail;
+      this.tail.prev = this.head;
    }
 
-   addTop(key, value) {
-      let node = new ListNode(key, value);
-      if (this.head === null) {
-         this.head = node;
-         this.tail = node;
-         this.length++;
-         return node;
-      } else {
-         node.next = this.head;
-         this.head.previous = node;
-         this.head = node;
-         this.length++;
-         return node;
-      }
+   remove(node) {
+      node.prev.next = node.next;
+      node.next.prev = node.prev;
+      return node;
    }
 
+   insert(node) {
+      node.prev = this.tail.prev;
+      node.next = this.tail;
+      this.tail.prev.next = node;
+      this.tail.prev = node;
+      return node;
+   }
 }
 
 class LRUCache {
    constructor(capacity) {
       this.capacity = capacity;
-      this.cacheIndex = {};
-      this.usedCache = 0;
+      this.cache = new Map();
       this.linkedList = new LinkedList();
    }
 
    get(key) {
-      let target = this.cacheIndex[key];
-      if (!target)
+      if (!this.cache.has(key))
          return -1;
-      if (target.previous) {
-         let parent = target.previous;
-         let child = target.next;
-         if (target.next)
-            child.previous = parent;
-         else
-            this.linkedList.tail = parent;
-         parent.next = child;
-         this.linkedList.head.previous = target;
-         target.previous = null;
-         target.next = this.linkedList.head;
-         this.linkedList.head = target;
-      }
-      return target.value;
+      return this.linkedList.insert(this.linkedList.remove(this.cache.get(key))).value;
    }
 
    put(key, value) {
-      let refresh = this.get(key);
-      let node;
-      if (refresh != -1) {
-         this.linkedList.head.value = value;
-         return;
+      if (this.cache.has(key)) {
+         this.linkedList.remove(this.cache.get(key));
+      } else if (this.cache.size === this.capacity) {
+         this.cache.delete(this.linkedList.remove(this.linkedList.head.next).key);
       }
-      if (this.usedCache === 0 || this.capacity === 1) {
-         this.cacheIndex[key] = this.linkedList.addTop(key, value);
-         node = this.cacheIndex[key]; //Remove
-         this.usedCache = 1;
-         this.cacheIndex = {};
-         return;
-      } else if (this.usedCache === this.capacity) {
-         //Evict the last one
-         let parentEvict = this.linkedList.tail.previous;
-         delete this.cacheIndex[this.linkedList.tail.cacheIndex];
-         parentEvict.next = null;
-         this.linkedList.tail = parentEvict;
-         this.usedCache--;
-         //Add
-         this.linkedList.addTop(key, value);
-         this.usedCache++;
-         this.cacheIndex[key] = node;
-         return;
-      } else {
-         this.linkedList.addTop(key, value);
-         this.usedCache++;
-         this.cacheIndex[key] = node;
-      }
+
+      this.cache.set(key, new CacheNode(key, value));
+      this.linkedList.insert(this.cache.get(key));
    }
-   _add(key, node) {
-      node.next = this.linkedList.head;
-      this.linkedList.head.previous = node;
-      this.linkedList.head = node;
-      this.usedCache++;
-      this.cacheIndex[key] = node;
-   }
+
 }
 
-// ["LRUCache", "get", "put", "get", "put", "put", "get", "get"]
-// [[2], [2], [2, 6], [1], [1, 5], [1, 2], [1], [2]]
-
-// [null, -1, null, -1, null, null, 2, -1]
-
-// [null, -1, null, -1, null, null, 2, 6]
-
-const lruCache = new LRUCache(2);
-//console.log(lruCache.get(2));
-lruCache.put(2, 6);
-console.log(lruCache.get(1));
-lruCache.put(1, 5);
-lruCache.put(1, 2);
-console.log(lruCache.get(1));
-console.log(lruCache.get(2));
+const myLruCache = new LRUCache(3);
+myLruCache.put(1, 1); //{1,1}
+myLruCache.put(2, 2); //{2,1} {1,1}
+myLruCache.put(3, 3); //{3,3} {1,1}
+console.log(myLruCache.get(2)); // result = 1 //{1,1} {2,1}
+myLruCache.put(4, 4); //{3,3} {4,4}
+console.log(myLruCache.get(2)); //result = -1
+console.log(myLruCache.get(1)); //result = -1
+console.log(myLruCache.get(3)); //result = 3
+console.log(myLruCache.get(4)); //result = 4
 
 
 
