@@ -8,7 +8,7 @@ function fibonacci(number) {
    return fibonacci((number - 1)) + fibonacci(number - 2);
 } //Time complexity O(2ˆn);
 
-// console.log(fibonacci(44)); //2.269.806.339
+//console.log(fibonacci(30)); //2.269.806.339
 // console.log(calculations);
 
 function fibonacciMaster() {
@@ -18,6 +18,7 @@ function fibonacciMaster() {
       if (number in cache) {
          return cache[number];
       } else {
+
          if (number < 2)
             return number;
          else {
@@ -30,7 +31,7 @@ function fibonacciMaster() {
 
 const fasterFibonacci = fibonacciMaster();
 
-console.log(fasterFibonacci(800)); //87
+console.log(fasterFibonacci(30)); //87
 console.log(calculationsMaster);
 
 function fibonacciInteractive(number) {

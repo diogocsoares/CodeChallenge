@@ -1,17 +1,18 @@
 // @ts-nocheck
 class CacheNode {
-   constructor(key, value) {
+   constructor(key, value, count) {
       this.value = value;
-      this.cacheIndex = key;
+      this.count = count ? count : 1;
+      this.key = key;
       this.prev = null;
       this.next = null;
    }
 }
 
 class LinkedList {
-   constructor() {
-      this.head = new CacheNode('h', 'head');
-      this.tail = new CacheNode('t', 'tail');
+   constructor(value) {
+      this.head = new CacheNode('head', 'head');
+      this.tail = new CacheNode('tail', 'tail');
       this.head.next = this.tail;
       this.tail.prev = this.head;
    }
@@ -29,15 +30,26 @@ class LinkedList {
       this.tail.prev = node;
       return node;
    }
+
+   insertTop(node) {
+      this.head.next.prev = node;
+      let holdNode = this.head.next;
+      this.head.next = node;
+      node.prev = this.head;
+      node.next = holdNode;
+      return node;
+   }
 }
 
 var list = new LinkedList();
+var node4 = new CacheNode(4, 4);
 var node1 = new CacheNode(1, 1);
 var node2 = new CacheNode(2, 2);
 var node3 = new CacheNode(3, 3);
 list.insert(node1);
 list.insert(node2);
 list.insert(node3);
-list.remove(node2);
+list.insertTop(node4);
 list.remove(node1);
-list.remove(node3);
+list.remove(node4);
+
