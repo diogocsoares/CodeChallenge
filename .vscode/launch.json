@@ -30,7 +30,7 @@
          "skipFiles": [
             "<node_internals>/**"
          ],
-         "program": "${workspaceFolder}/Week01/lfuCacheMap.js"
+         "program": "${workspaceFolder}/Week01/dayOfWeek.js"
          // "program": "${workspaceFolder}/Week01/test.js"
       }
    ]
