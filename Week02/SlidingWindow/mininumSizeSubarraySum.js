@@ -80,8 +80,29 @@ var minSubArrayLenV2 = function (target, nums) {
 };
 
 
+var minSubArrayLenV3 = function (target, nums) {
+   let minLength = Number.MAX_VALUE;
+   let windowStart = 0;
+   let currentSum = 0;
+   let subarrayExist = false;
+
+   for (let windowEnd = 0; windowEnd < nums.length; windowEnd++) {
+      currentSum += nums[windowEnd];
+
+      while (currentSum >= target) {
+         minLength = Math.min(minLength, windowEnd - windowStart + 1);
+         currentSum -= nums[windowStart];
+         windowStart++;
+         subarrayExist = true;
+      }
+
+   }
+   minLength = subarrayExist ? minLength : 0;
+   return minLength;
+}
+
 
 //console.log(minSubArrayLenV2(1, [1, 4, 4]));
-console.log(minSubArrayLenV2(7, [2, 3, 1, 2, 4, 3]));
+console.log(minSubArrayLenV3(7, [2, 3, 1, 2, 4, 3]));
 //console.log(minSubArrayLenV2(11, [1, 1, 1, 1, 1, 1, 1, 1]));
 //console.log(minSubArrayLenV2(11, [1, 2, 3, 4, 5]));
