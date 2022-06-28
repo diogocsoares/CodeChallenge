@@ -42,16 +42,25 @@
 
 class ListNode {
    constructor(value) {
-      this.value = value,
+      this.val = value,
          this.next = null
    }
 }
 
 class LinkedList {
    constructor(value) {
-      this.head = new ListNode(value);
-      this.tail = this.head;
-      this.length = 1;
+      if (Array.isArray(value)) {
+         this.head = new ListNode(value[0]);
+         this.tail = this.head;
+         this.length = 1;
+         for (let i = 1; i < value.length; i++)
+            this.append(value[i]);
+      } else {
+         this.head = new ListNode(value);
+         this.tail = this.head;
+         this.length = 1;
+      }
+
    }
 
    append(value) {
@@ -78,7 +87,7 @@ class LinkedList {
       let currentNode = this.head;
       let previousNode = this.head;
       while (currentNode.next !== null) {
-         if (currentNode.value === key) {
+         if (currentNode.val === key) {
             if (currentNode === previousNode) {
                this.head = currentNode.next;
                this.length--;
@@ -92,7 +101,7 @@ class LinkedList {
          previousNode = currentNode;
          currentNode = currentNode.next;
       }
-      if (currentNode.next === null && currentNode.value === key) {
+      if (currentNode.next === null && currentNode.val === key) {
          previousNode.next = null;
          this.tail = previousNode;
          this.length--;
@@ -168,7 +177,7 @@ class LinkedList {
    traverseToKey(key) {
       let currentNode = this.head;
       while (currentNode.next !== null) {
-         if (currentNode.value === key)
+         if (currentNode.val === key)
             return currentNode;
          currentNode = currentNode.next;
       }
@@ -176,11 +185,11 @@ class LinkedList {
    }
 
    printList() {
-      const array = [this.head.value];
+      const array = [this.head.val];
       let currentNode = this.head;
       while (currentNode.next !== null) {
          currentNode = currentNode.next;
-         array.push(currentNode.value);
+         array.push(currentNode.val);
       }
       return array;
    }
@@ -189,10 +198,10 @@ class LinkedList {
       if (this.length === 1)
          return this.printList();
       let currentNode = this.head;
-      let reversedLinkedList = new LinkedList(currentNode.value);
+      let reversedLinkedList = new LinkedList(currentNode.val);
       while (currentNode.next !== null) {
          currentNode = currentNode.next;
-         reversedLinkedList.prepend(currentNode.value);
+         reversedLinkedList.prepend(currentNode.val);
       }
       return reversedLinkedList.printList();
    }
@@ -213,36 +222,41 @@ class LinkedList {
       this.head = first;
       return this.printList();
    }
+
+   addCycle(index) {
+      this.tail.next = this.traverseToIndex(index);
+      return this.tail.next != null;
+   }
 };
 
-const myNewLinkedList = new LinkedList(10);
-myNewLinkedList.append(5);
-myNewLinkedList.append(16);
-myNewLinkedList.prepend(1);
-console.log(myNewLinkedList.printList());
-myNewLinkedList.insertByValue(10, 2);
-myNewLinkedList.insertByValue(5, 3);
-myNewLinkedList.insertByValue(250, 50);
-myNewLinkedList.insertByValue(1, 99);
-console.log(myNewLinkedList.insertByIndex(3, 123));
-console.log(myNewLinkedList.insertByIndex(200, 140));
-console.log('tail:', myNewLinkedList.tail);
+// const myNewLinkedList = new LinkedList(10);
+// myNewLinkedList.append(5);
+// myNewLinkedList.append(16);
+// myNewLinkedList.prepend(1);
+// console.log(myNewLinkedList.printList());
+// myNewLinkedList.insertByValue(10, 2);
+// myNewLinkedList.insertByValue(5, 3);
+// myNewLinkedList.insertByValue(250, 50);
+// myNewLinkedList.insertByValue(1, 99);
+// console.log(myNewLinkedList.insertByIndex(3, 123));
+// console.log(myNewLinkedList.insertByIndex(200, 140));
+// console.log('tail:', myNewLinkedList.tail);
 
-myNewLinkedList.insertByValue(140, 141);
-console.log('tail:', myNewLinkedList.tail);
-console.log(myNewLinkedList.lookup(80));
-console.log(myNewLinkedList.lookup(123));
-console.log(myNewLinkedList.removeByIndex(3));
-console.log(myNewLinkedList.removeByIndex(0));
-console.log(myNewLinkedList.head);
-console.log(myNewLinkedList.removeByValue(3));
-console.log(myNewLinkedList.removeByValue(1));
-console.log(myNewLinkedList.lookup(3));
-console.log(myNewLinkedList.removeByValue(141));
-console.log('tail:', myNewLinkedList.tail);
-console.log(myNewLinkedList.removeByIndex(6));
-//console.log('tail:', myNewLinkedList.tail);
-console.log(myNewLinkedList.reverse())
-console.log(myNewLinkedList.reverse2())
+// myNewLinkedList.insertByValue(140, 141);
+// console.log('tail:', myNewLinkedList.tail);
+// console.log(myNewLinkedList.lookup(80));
+// console.log(myNewLinkedList.lookup(123));
+// console.log(myNewLinkedList.removeByIndex(3));
+// console.log(myNewLinkedList.removeByIndex(0));
+// console.log(myNewLinkedList.head);
+// console.log(myNewLinkedList.removeByValue(3));
+// console.log(myNewLinkedList.removeByValue(1));
+// console.log(myNewLinkedList.lookup(3));
+// console.log(myNewLinkedList.removeByValue(141));
+// console.log('tail:', myNewLinkedList.tail);
+// console.log(myNewLinkedList.removeByIndex(6));
+// //console.log('tail:', myNewLinkedList.tail);
+// console.log(myNewLinkedList.reverse())
+// console.log(myNewLinkedList.reverse2())
 
 module.exports = LinkedList;

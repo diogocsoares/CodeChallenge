@@ -1,6 +1,6 @@
 class ListNode {
    constructor(value) {
-      this.value = value,
+      this.val = value,
          this.next = null,
          this.prev = null
    }
@@ -8,7 +8,15 @@ class ListNode {
 
 class DoublyLinkedList {
    constructor(value) {
-      this._firstNode(value);
+      if (Array.isArray(value)) {
+         this.length = 1;
+         this._firstNode(value[0]);
+         for (let i = 1; i < value.length; i++)
+            this.append(value[i]);
+      } else {
+         this.length = 1;
+         this._firstNode(value);
+      }
    }
 
    append(value) {
@@ -45,7 +53,7 @@ class DoublyLinkedList {
       if (this.length === 0)
          return false;
 
-      if (this.length === 1 && this.head.value === key) {
+      if (this.length === 1 && this.head.val === key) {
          this.tail = null;
          this.head = null;
          this.length--;
@@ -56,7 +64,7 @@ class DoublyLinkedList {
       let previousNode = this.head.prev;
       let nextNode = this.head.next;
       while (currentNode.next !== null) {
-         if (currentNode.value === key) {
+         if (currentNode.val === key) {
             if (currentNode.prev === null) {
                this.head = currentNode.next;
                this.head.prev = null;
@@ -183,7 +191,7 @@ class DoublyLinkedList {
    traverseToKey(key) {
       let currentNode = this.head;
       while (currentNode.next !== null) {
-         if (currentNode.value === key)
+         if (currentNode.val === key)
             return currentNode;
          currentNode = currentNode.next;
       }
@@ -193,13 +201,13 @@ class DoublyLinkedList {
    printList() {
       const array = [];
       if (this.head)
-         array.push(this.head.value);
+         array.push(this.head.val);
       else
          return array;
       let currentNode = this.head;
       while (currentNode.next !== null) {
          currentNode = currentNode.next;
-         array.push(currentNode.value);
+         array.push(currentNode.val);
       }
       return array;
    }
@@ -207,7 +215,6 @@ class DoublyLinkedList {
    _firstNode(value) {
       this.head = new ListNode(value);
       this.tail = this.head;
-      this.length = 1;
    }
 
 };
@@ -235,21 +242,23 @@ console.log(myNewLinkedList.printList());
 //console.log(myNewLinkedList.removeByIndex(2));
 // console.log(myNewLinkedList.head);
 
-console.log(myNewLinkedList.removeByValue(5));
-console.log(myNewLinkedList.removeByValue(10));
-console.log(myNewLinkedList.removeByValue(10));
-myNewLinkedList.append(5);
-myNewLinkedList.append(10);
-myNewLinkedList.prepend(16);
-console.log(myNewLinkedList.printList());
-console.log(myNewLinkedList.insertByIndex(1, 123));
-console.log(myNewLinkedList.removeByValue(1));
-console.log(myNewLinkedList.insertByValue(10, 2));
-console.log(myNewLinkedList.insertByValue(4545, 8));
-//console.log(myNewLinkedList.removeByValue(16));
+// console.log(myNewLinkedList.removeByValue(5));
+// console.log(myNewLinkedList.removeByValue(10));
+// console.log(myNewLinkedList.removeByValue(10));
+// myNewLinkedList.append(5);
+// myNewLinkedList.append(10);
+// myNewLinkedList.prepend(16);
+// console.log(myNewLinkedList.printList());
+// console.log(myNewLinkedList.insertByIndex(1, 123));
 // console.log(myNewLinkedList.removeByValue(1));
-// console.log(myNewLinkedList.lookup(3));
-// console.log(myNewLinkedList.removeByValue(141));
-// console.log('tail:', myNewLinkedList.tail);
-// console.log(myNewLinkedList.removeByIndex(6));
-// console.log('tail:', myNewLinkedList.tail);
+// console.log(myNewLinkedList.insertByValue(10, 2));
+// console.log(myNewLinkedList.insertByValue(4545, 8));
+// //console.log(myNewLinkedList.removeByValue(16));
+// // console.log(myNewLinkedList.removeByValue(1));
+// // console.log(myNewLinkedList.lookup(3));
+// // console.log(myNewLinkedList.removeByValue(141));
+// // console.log('tail:', myNewLinkedList.tail);
+// // console.log(myNewLinkedList.removeByIndex(6));
+// // console.log('tail:', myNewLinkedList.tail);
+
+module.exports = DoublyLinkedList;
