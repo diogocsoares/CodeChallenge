@@ -70,7 +70,7 @@ var findDuplicateV2 = function (nums) {
          pointerA++;
       }
    }
-}; //Using an set to store the keys increase the space complexity. To solve this problem uses only constant extra space an better approach could be using Fast and Slow pointers (Hare & Tortoise algorithm)
+}; //Using an set to store the keys increase the space complexity. To solve this problem uses only constant extra space an better approach could be using Fast and Slow pointers (Hare & Tortoise algorithm or Floyd's Algorithm)
 
 // console.log(findDuplicateV2([1, 3, 4, 2, 2]));
 // console.log(findDuplicateV2([3, 1, 3, 4, 2]));
