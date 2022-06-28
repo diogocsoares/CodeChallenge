@@ -26,6 +26,8 @@ Constraints:
 Follow up: If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log(n)).
 */
 
+
+//The approach below using a fixing window size for each interaction results in Time Limit Exceeded for arrays with 1000 elements in leetcode.
 var minSubArrayLen = function (target, nums) {
    let window = [0, 0];
    let sumWindow = 0;
@@ -55,6 +57,7 @@ var minSubArrayLen = function (target, nums) {
 //console.log(minSubArrayLen(11, [1, 2, 3, 4, 5]));
 
 
+//Below to resolve the Time Limit Exceeded we increase right and shrinks left while finding a solution. Maybe this approach can be considering two pointer because despite we are dealing with an unsorted array we are dealing with elements in the array is a pair, a triplet, or even a subarray.
 
 var minSubArrayLenV2 = function (target, nums) {
    let result;

@@ -30,7 +30,7 @@
          "skipFiles": [
             "<node_internals>/**"
          ],
-         "program": "${workspaceFolder}/Week02/SlidingWindow/mininumSizeSubarraySum.js"
+         "program": "${workspaceFolder}/Week02/TwoPointers/findTheDuplicateNumber.js"
          // "program": "${workspaceFolder}/Week02/test.js"
       }
    ]
