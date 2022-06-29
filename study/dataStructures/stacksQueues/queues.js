@@ -52,13 +52,13 @@ class Queue {
    }
 }
 
-const myQueue = new Queue();
-console.log('Added to the queue: ', myQueue.enqueue('Diogo'));
-console.log('Added to the queue: ', myQueue.enqueue('Carla'));
-console.log('Added to the queue: ', myQueue.enqueue('Daniel'));
-console.log('The first one in the queue is:', myQueue.peek(), 'line length is:', myQueue.length);
-console.log('Call the first one:', myQueue.dequeue(), 'line length is:', myQueue.length);
-console.log('Call the first one:', myQueue.dequeue(), 'line length is:', myQueue.length);
-console.log('Call the first one:', myQueue.dequeue(), 'line length is:', myQueue.length);
+// const myQueue = new Queue();
+// console.log('Added to the queue: ', myQueue.enqueue('Diogo'));
+// console.log('Added to the queue: ', myQueue.enqueue('Carla'));
+// console.log('Added to the queue: ', myQueue.enqueue('Daniel'));
+// console.log('The first one in the queue is:', myQueue.peek(), 'line length is:', myQueue.length);
+// console.log('Call the first one:', myQueue.dequeue(), 'line length is:', myQueue.length);
+// console.log('Call the first one:', myQueue.dequeue(), 'line length is:', myQueue.length);
+// console.log('Call the first one:', myQueue.dequeue(), 'line length is:', myQueue.length);
 
 module.exports = Queue;

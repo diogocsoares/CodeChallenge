@@ -150,14 +150,16 @@ class BinarySearchTree {
          }
       }
    }
+
+   traverse(node) {
+      const tree = { this: node.value };
+      tree.left = node.left === null ? null : this.traverse(node.left);
+      tree.right = node.right === null ? null : this.traverse(node.right);
+      return tree;
+   }
+
 }
 
-function traverse(node) {
-   const tree = { this: node.value };
-   tree.left = node.left === null ? null : traverse(node.left);
-   tree.right = node.right === null ? null : traverse(node.right);
-   return tree;
-}
 
 // const tree = new BinarySearchTree();
 // tree.insert(9);

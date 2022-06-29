@@ -15,10 +15,10 @@
 //Edge list
 
 
-2 -- - 0
-   / \
-1   3
-   * /
+// 2 -- - 0
+//    / \
+// 1   3
+//    * /
 
 
 
@@ -48,6 +48,9 @@ const adjacentMatrixGraphObject = {
 
 //This matrix is simply going to have zeros and ones indicating whether the node X has a connection to node Y. Zero means no one means yes. And if you have a weighted graph, you can actually add weights instead of on and zero. Maybe you can use object creating an hash table with key and value pair.
 
+
+
+
 class Graph {
    constructor() {
       this.numberOfNodes = 0;
@@ -57,7 +60,8 @@ class Graph {
    addVertex(node) { // A vertex can be called node.
       //undirected graph
       if (this.numberOfNodes === 0) {
-         this.adjacentList[0] = [];
+         //         this.adjacentList[0] = []; ???
+         this.adjacentList[node] = [];
          this.numberOfNodes++;
          return true;
       }
@@ -116,25 +120,27 @@ class Graph {
    }
 }
 
-const myGraph = new Graph();
+// const myGraph = new Graph();
 
-myGraph.addVertex('0');
-myGraph.addVertex('1');
-myGraph.addVertex('2');
-myGraph.addVertex('3');
-myGraph.addVertex('4');
-myGraph.addVertex('5');
-myGraph.addVertex('6');
+// myGraph.addVertex('0');
+// myGraph.addVertex('1');
+// myGraph.addVertex('2');
+// myGraph.addVertex('3');
+// myGraph.addVertex('4');
+// myGraph.addVertex('5');
+// myGraph.addVertex('6');
 
-myGraph.addEdges('3', '1');
-myGraph.addEdges('3', '4');
-myGraph.addEdges('4', '2');
-myGraph.addEdges('4', '5');
-myGraph.addEdges('1', '2');
-myGraph.addEdges('1', '0');
-myGraph.addEdges('0', '2');
-myGraph.addEdges('6', '5');
-myGraph.addEdges('6', '5');
-//myGraph.addEdgesSimpleWay('6', '5');
+// myGraph.addEdges('3', '1');
+// myGraph.addEdges('3', '4');
+// myGraph.addEdges('4', '2');
+// myGraph.addEdges('4', '5');
+// myGraph.addEdges('1', '2');
+// myGraph.addEdges('1', '0');
+// myGraph.addEdges('0', '2');
+// myGraph.addEdges('6', '5');
+// myGraph.addEdges('6', '5');
+// //myGraph.addEdgesSimpleWay('6', '5');
 
-myGraph.showConnections();
+// myGraph.showConnections();
+
+module.exports = Graph;

@@ -25,3 +25,37 @@ function BinaryTreeNodeExample(value) {
 // Log is simply means that based on the height, the maximum number od decisions it's going to be log N. One decision for each level or step. In a tree with 3 levels we have 3 decision to make in a worst case.
 
 //Full Binary Tree: Which simply says that a node has either a zero or two children, but never one child.
+
+class TreeNode {
+   constructor(value) {
+      this.val = value;
+      this.left = null;
+      this.right = null;
+   }
+}
+
+class BinaryTree {
+   constructor(value) {
+      this.root = new TreeNode(value);
+   }
+
+   addLeft(parent, value) {
+      parent.left = new TreeNode(value);
+      return parent.left;
+   }
+
+   addRight(parent, value) {
+      parent.right = new TreeNode(value);
+      return parent.right;
+   }
+
+   traverse(node) {
+      const tree = { this: node.val };
+      tree.left = node.left === null ? null : this.traverse(node.left);
+      tree.right = node.right === null ? null : this.traverse(node.right);
+      return tree;
+   }
+
+}
+
+module.exports = BinaryTree;
