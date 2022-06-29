@@ -41,10 +41,6 @@ var pathSumAux = function (root, targetSum, isInitialRoot) {
    let leftSubTree = pathSumAux(root.left, targetSum - value, false);
    let rightSubTree = pathSumAux(root.right, targetSum - value, false);
 
-   //Three options:
-   //append root to every left subtree answer
-   //append root to every right subtree answer
-   //if root value === target sum return path
    for (let i = 0; i < leftSubTree.length; i++) {
       leftSubTree[i].push(value);
       allViableAnswer.push(leftSubTree[i]);
@@ -82,3 +78,25 @@ sumTree.addRight(holdNode, 1);
 console.log(pathSum(sumTree.root, 22));
 
 //console.log(sumTree.traverse(sumTree.root.right));
+
+var pathSum2 = function (root, targetSum) {
+   if (!root) return [];
+   const output = [];
+
+   const dfs = (node, sum, path = []) => {
+      if (node) {
+         path.push(node.val);
+         if (!node.left && !node.right) {
+            if (targetSum === sum + node.val) {
+               output.push([...path]);
+            }
+         }
+         if (node.left) dfs(node.left, sum + node.val, path);
+         if (node.right) dfs(node.right, sum + node.val, path);
+         path.pop();
+      }
+   };
+   dfs(root, 0);
+
+   return output;
+};
