@@ -26,6 +26,7 @@ function BinaryTreeNodeExample(value) {
 
 //Full Binary Tree: Which simply says that a node has either a zero or two children, but never one child.
 
+
 class TreeNode {
    constructor(value) {
       this.val = value;
@@ -37,6 +38,7 @@ class TreeNode {
 class BinaryTree {
    constructor(value) {
       this.root = new TreeNode(value);
+      this.items = [];
    }
 
    addLeft(parent, value) {
@@ -50,10 +52,33 @@ class BinaryTree {
    }
 
    traverse(node) {
+      if (!node)
+         node = this.root;
       const tree = { this: node.val };
       tree.left = node.left === null ? null : this.traverse(node.left);
       tree.right = node.right === null ? null : this.traverse(node.right);
       return tree;
+   }
+
+   convertTree(node) {
+      if (!node)
+         node = this.root;
+      this.items = [];
+      let queue = [node];
+      let missingElements = 0;
+      while (queue.length > 0) {
+         let currentNode = queue.shift();
+         if (currentNode != null) {
+            for (let i = 1; i <= missingElements; i++)
+               this.items.push(null);
+            missingElements = 0;
+            this.items.push(currentNode.val);
+            queue.push(currentNode.left);
+            queue.push(currentNode.right);
+         } else
+            missingElements++;
+      }
+      return this.items;
    }
 
 }

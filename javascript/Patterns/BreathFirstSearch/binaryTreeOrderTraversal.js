@@ -19,7 +19,7 @@ The number of nodes in the tree is in the range [0, 2000].
 -1000 <= Node.val <= 1000
 */
 
-const BinaryTree = require('../../study/dataStructures/trees/trees');
+const BinaryTree = require('../../DataStructures/Trees/trees');
 
 class QueueNode {
    constructor(value) {
