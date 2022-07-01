@@ -61,7 +61,7 @@ class Heap {
       return child > this.size - 1 ? null : child;
    }
    parent(index) {
-      return Math.floor((index) / 2);
+      return Math.trunc((index - 1) / 2);
    }
 
    isPerfect() {
@@ -127,6 +127,31 @@ class MaxHeap extends Heap {
       this.size = holdSize;
       return this.printHeap();
    }
+
+   //Need to verify
+   heapFy() {
+      let currentIndex = this.size - 1;
+      let queue = [];
+
+      while (!this.leftChild(currentIndex)) {
+         queue.push(currentIndex);
+         currentIndex--
+      }
+
+      for (let i = 0; i < queue.length; i++) {
+         currentIndex = queue[i];
+         let parentIndex = this.parent(currentIndex);
+         currentIndex = currentIndex - (this.items[currentIndex] > this.items[currentIndex - 1] ? 0 : 1);
+         while (this.items[parentIndex] < this.items[currentIndex]) {
+            let parentValue = this.items[parentIndex];
+            this.items[parentIndex] = this.items[currentIndex];
+            this.items[currentIndex] = parentValue;
+            currentIndex = parentIndex;
+            parentIndex = this.parent(currentIndex);
+         }
+      }
+      return this.printHeap();
+   }
 }
 
 //root
@@ -149,7 +174,7 @@ class MaxHeap extends Heap {
 // console.log(maxHeap.deleteMax());
 // console.log(maxHeap.items);
 // console.log(maxHeap.printHeap());
-const maxHeapUnordered = new MaxHeap([40, 30, 15, 10, 20]);
+const maxHeapUnordered = new MaxHeap([10, 20, 15, 12, 40, 25, 18]);
 console.log(maxHeapUnordered.printHeap());
-console.log(maxHeapUnordered.reorder());
+console.log(maxHeapUnordered.heapFy());
 
