@@ -38,28 +38,25 @@ var i = 2;
 // console.log('Right Child', ((a = 2 * i + 2, b = labHeap.length) => { return a > b ? null : a })());
 // console.log('Parent', Math.floor((i + 1) / 2));
 
-class HeapNode {
-   constructor(value) {
-      this.val = value;
-      this.parent = null;
-   }
-}
-
 class Heap {
-   constructor(value) {
+   constructor(value, type) {
       value = value === null || undefined ? 0 : value;
       this.items = Array.isArray(value) ? value : [value];
       this.size = this.items.length;
+      this.type = type === 0 ? 'min' : 'max';
+      this.heapFy();
    }
 
    leftChild(index) {
       let child = 2 * index + 1;
       return child > this.size - 1 ? null : child;
    }
+
    rightChild(index) {
       let child = 2 * index + 2;
       return child > this.size - 1 ? null : child;
    }
+
    parent(index) {
       return Math.trunc((index - 1) / 2);
    }
@@ -75,12 +72,6 @@ class Heap {
    printHeap() {
       return this.items.slice(0, this.size);
    }
-}
-
-class MaxHeap extends Heap {
-   constructor(value) {
-      super(value);
-   }
 
    insert(value) {
       //increase heap size only if it is necessary this.size (used space) vs this.items.length (available space)
@@ -89,33 +80,17 @@ class MaxHeap extends Heap {
       else
          this.items.push(value);
       this.size++;
-      let valueIndex = this.size - 1;
-      let parentIndex = this.parent(valueIndex);
-      while (this.items[parentIndex] < this.items[valueIndex]) {
-         let parentValue = this.items[parentIndex];
-         this.items[parentIndex] = value;
-         this.items[valueIndex] = parentValue;
-         valueIndex = parentIndex;
-         parentIndex = this.parent(valueIndex);
-      }
+      let compared = this._compare(this.size - 1, this.parent(this.size - 1));
+      this._moveUp(this.parent(this.size - 1), compared);
       return this.items;
    }
 
    deleteMax() {
-      let currentIndex = 0;
-      let deletedValue = this.items[currentIndex];
-      this.items[currentIndex] = this.items[this.size - 1];
+      let deletedValue = this.items[0];
+      this.items[0] = this.items[this.size - 1];
       this.items[this.size - 1] = deletedValue;
-      let topValue = this.items[currentIndex];
       this.size--;
-      let direction = this.items[currentIndex + 1] > this.items[currentIndex + 2] ? 1 : 2;
-      while (direction > 0 && this.leftChild(currentIndex)) {
-         let parentValue = this.items[direction];
-         this.items[direction] = topValue;
-         this.items[currentIndex] = parentValue;
-         currentIndex = direction;
-         direction += this.items[currentIndex + 1] > this.items[currentIndex + 2] ? 1 : 2;
-      }
+      this._moveDown(0);
       return deletedValue;
    }
 
@@ -128,29 +103,59 @@ class MaxHeap extends Heap {
       return this.printHeap();
    }
 
-   //Need to verify
    heapFy() {
-      let currentIndex = this.size - 1;
-      let queue = [];
-
-      while (!this.leftChild(currentIndex)) {
-         queue.push(currentIndex);
-         currentIndex--
-      }
-
-      for (let i = 0; i < queue.length; i++) {
-         currentIndex = queue[i];
-         let parentIndex = this.parent(currentIndex);
-         currentIndex = currentIndex - (this.items[currentIndex] > this.items[currentIndex - 1] ? 0 : 1);
-         while (this.items[parentIndex] < this.items[currentIndex]) {
-            let parentValue = this.items[parentIndex];
-            this.items[parentIndex] = this.items[currentIndex];
-            this.items[currentIndex] = parentValue;
-            currentIndex = parentIndex;
-            parentIndex = this.parent(currentIndex);
+      for (let i = 0; i < this.items.length; i++) {
+         if (i > 0) {
+            let parentIndex = this.parent(i);
+            let compared = this._compare(i, parentIndex);
+            this._moveUp(parentIndex, compared);
          }
       }
       return this.printHeap();
+   }
+
+   _compare(index1, index2) {
+      let result = [];
+      let minValue = this.type === 'max' ? 0 : Number.MAX_VALUE;
+
+      let value1 = this.items[index1] === undefined || this.items[index1] === null ? minValue : this.items[index1];
+      let value2 = this.items[index2] === undefined || this.items[index2] === null ? minValue : this.items[index2];
+      if (this.type === 'max') {
+         result.push(value1 > value2 ? index1 : index2);
+         result.push(this.items[result[0]]);
+      } else {
+         result.push(value1 > value2 ? index2 : index1);
+         result.push(this.items[result[0]]);
+      }
+      return result[0] > this.size - 1 ? [0, 0] : result;
+   }
+
+   _moveUp(parentIndex, compared) {
+      if (parentIndex === 0)
+         return 0;
+      while (parentIndex != compared[0]) {
+         let parentValue = this.items[parentIndex];
+         this.items[parentIndex] = compared[1];
+         this.items[compared[0]] = parentValue;
+         if (parentIndex > 0) {
+            let holdParent = parentIndex;
+            parentIndex = this.parent(parentIndex);
+            compared = this._compare(holdParent, parentIndex);
+         } else compared[0] = 0;
+      }
+   }
+   _moveDown(index) {
+      let compared = this._compare(this.leftChild(index), this.rightChild(index));
+      while (index != compared[0] && this.leftChild(index)) {
+         let parentValue = this.items[index];
+         this.items[index] = compared[1];
+         this.items[compared[0]] = parentValue;
+         index = compared[0];
+         if (this.leftChild(index)) {
+            compared = this._compare(this.leftChild(index), this.rightChild(index));
+            compared = this._compare(index, compared[0]);
+         } else compared[0] = 0;
+      }
    }
 }
 
@@ -170,11 +175,15 @@ class MaxHeap extends Heap {
 //console.log(tree.isPerfect());
 
 // const maxHeap = new MaxHeap([50, 30, 20, 15, 10, 8, 16]);
-// console.log(maxHeap.items);
-// console.log(maxHeap.deleteMax());
-// console.log(maxHeap.items);
-// console.log(maxHeap.printHeap());
-const maxHeapUnordered = new MaxHeap([10, 20, 15, 12, 40, 25, 18]);
-console.log(maxHeapUnordered.printHeap());
-console.log(maxHeapUnordered.heapFy());
+// console.log(maxHeap.insert(60));
 
+const maxHeap = new Heap([50, 30, 20, 15, 10, 8, 14]);
+// console.log(maxHeap.items);
+// maxHeap.deleteMax();
+// console.log(maxHeap.items);
+console.log(maxHeap.printHeap());
+console.log(maxHeap.insert(60));
+//console.log(maxHeap.reorder());
+// const maxHeapUnordered = new MaxHeap([50, 30, 20, 15, 10, 8, 16]);
+// console.log(maxHeapUnordered.printHeap());
+// console.log(maxHeapUnordered.heapFy());
