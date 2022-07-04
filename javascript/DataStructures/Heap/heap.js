@@ -76,7 +76,7 @@ class Heap {
    insert(value) {
       //increase heap size only if it is necessary this.size (used space) vs this.items.length (available space)
       if (this.size < this.items.length)
-         this.items[this.size];
+         this.items[this.size] = value;
       else
          this.items.push(value);
       this.size++;
@@ -121,18 +121,16 @@ class Heap {
       let value1 = this.items[index1] === undefined || this.items[index1] === null ? minValue : this.items[index1];
       let value2 = this.items[index2] === undefined || this.items[index2] === null ? minValue : this.items[index2];
       if (this.type === 'max') {
-         result.push(value1 > value2 ? index1 : index2);
+         result.push(Math.abs(value1) > Math.abs(value2) ? index1 : index2);
          result.push(this.items[result[0]]);
       } else {
-         result.push(value1 > value2 ? index2 : index1);
+         result.push(Math.abs(value1) > Math.abs(value2) ? index1 : index2);
          result.push(this.items[result[0]]);
       }
       return result[0] > this.size - 1 ? [0, 0] : result;
    }
 
    _moveUp(parentIndex, compared) {
-      if (parentIndex === 0)
-         return 0;
       while (parentIndex != compared[0]) {
          let parentValue = this.items[parentIndex];
          this.items[parentIndex] = compared[1];
@@ -146,6 +144,7 @@ class Heap {
    }
    _moveDown(index) {
       let compared = this._compare(this.leftChild(index), this.rightChild(index));
+      compared = this._compare(index, compared[0]);
       while (index != compared[0] && this.leftChild(index)) {
          let parentValue = this.items[index];
          this.items[index] = compared[1];
@@ -177,13 +176,14 @@ class Heap {
 // const maxHeap = new MaxHeap([50, 30, 20, 15, 10, 8, 16]);
 // console.log(maxHeap.insert(60));
 
-const maxHeap = new Heap([50, 30, 20, 15, 10, 8, 14]);
+// const maxHeap = new Heap([50, 30, 20, 15, 10, 8, 14]);
 // console.log(maxHeap.items);
 // maxHeap.deleteMax();
 // console.log(maxHeap.items);
-console.log(maxHeap.printHeap());
-console.log(maxHeap.insert(60));
+// console.log(maxHeap.printHeap());
+// console.log(maxHeap.insert(60));
 //console.log(maxHeap.reorder());
 // const maxHeapUnordered = new MaxHeap([50, 30, 20, 15, 10, 8, 16]);
 // console.log(maxHeapUnordered.printHeap());
 // console.log(maxHeapUnordered.heapFy());
+
