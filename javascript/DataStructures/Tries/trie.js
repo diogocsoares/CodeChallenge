@@ -14,6 +14,7 @@ class Trie {
     insert(word){
         let currentNode = this.root;
         for (let i=0; i < word.length; i++) {
+            let value = currentNode.children.word[i] === undefined
             if (currentNode.children.word[i] === undefined)
                 currentNode.children[word[i]] = new TrieNode();
         }
