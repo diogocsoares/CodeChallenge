@@ -64,12 +64,25 @@ MedianFinder.prototype.addNum = function (num) {
  * @return {number}
  */
 MedianFinder.prototype.findMedian = function () {
-   if (this.maxHeap.size === this.minHeap.size)
+
+
+   if (this.maxHeap.size === this.minHeap.size) {
+      if (this.minHeap.items[0] === 16660)
+         console.log(this.minHeap.items, this.maxHeap.items);
+
       return ((this.maxHeap.items[0] + this.minHeap.items[0]) / 2);
-   else if (this.maxHeap.size > this.minHeap.size)
+   }
+   else if (this.maxHeap.size > this.minHeap.size) {
+      if (this.minHeap.items[0] === 16660)
+         console.log(this.minHeap.items);
+
       return this.maxHeap.items[0];
-   else
+   }
+   else {
+      if (this.minHeap.items[0] === 16660)
+         console.log(this.minHeap.items);
       return this.minHeap.items[0];
+   }
 };
 
 class Heap {
@@ -134,10 +147,16 @@ class Heap {
       let value1 = this.items[index1] === undefined || this.items[index1] === null ? minValue : this.items[index1];
       let value2 = this.items[index2] === undefined || this.items[index2] === null ? minValue : this.items[index2];
       if (this.type === 'max') {
-         result.push(Math.abs(value1) > Math.abs(value2) ? index1 : index2);
+         if (value1 < 0 && value2 < 0)
+            result.push(Math.abs(value1) > Math.abs(value2) ? index1 : index2);
+         else
+            result.push(value1 > value2 ? index1 : index2);
          result.push(this.items[result[0]]);
       } else {
-         result.push(Math.abs(value1) > Math.abs(value2) ? index2 : index1);
+         if (value1 < 0 && value2 < 0)
+            result.push(Math.abs(value1) > Math.abs(value2) ? index2 : index1);
+         else
+            result.push(value1 > value2 ? index2 : index1);
          result.push(this.items[result[0]]);
       }
       return result[0] > this.size - 1 ? [0, 0] : result;
@@ -177,14 +196,13 @@ class Heap {
  * var param_2 = obj.findMedian()
 **/
 
-var obj = new MedianFinder()
-obj.addNum(12);
-obj.addNum(10);
-obj.addNum(13);
-obj.addNum(11);
-console.log(obj.findMedian());
-//obj.addNum(5);
+// var obj = new MedianFinder()
+// obj.addNum(12);
+// obj.addNum(10);
+// obj.addNum(13);
+// obj.addNum(11);
+// console.log(obj.findMedian());
+// //obj.addNum(5);
 
 
-// ["MedianFinder", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian"]
-// [[], [12], [], [10], [], [13], [], [11], [], [5], [], [15], [], [1], [], [11], [], [6], [], [17], [], [14], [], [8], [], [17], [], [6], [], [4], [], [16], [], [8], [], [10], [], [2], [], [12], [], [0], []]
+module.exports = MedianFinder;
