@@ -147,16 +147,16 @@ class Heap {
       let value1 = this.items[index1] === undefined || this.items[index1] === null ? minValue : this.items[index1];
       let value2 = this.items[index2] === undefined || this.items[index2] === null ? minValue : this.items[index2];
       if (this.type === 'max') {
-         if (value1 < 0 && value2 < 0)
-            result.push(Math.abs(value1) > Math.abs(value2) ? index1 : index2);
-         else
-            result.push(value1 > value2 ? index1 : index2);
+         // if (value1 < 0 && value2 < 0)
+         //    result.push(Math.abs(value1) > Math.abs(value2) ? index1 : index2);
+         // else
+         result.push(value1 > value2 ? index1 : index2);
          result.push(this.items[result[0]]);
       } else {
-         if (value1 < 0 && value2 < 0)
-            result.push(Math.abs(value1) > Math.abs(value2) ? index2 : index1);
-         else
-            result.push(value1 > value2 ? index2 : index1);
+         // if (value1 < 0 && value2 < 0)
+         result.push(Math.abs(value1) > Math.abs(value2) ? index2 : index1);
+         // else
+         //    result.push(value1 > value2 ? index2 : index1);
          result.push(this.items[result[0]]);
       }
       return result[0] > this.size - 1 ? [0, 0] : result;
