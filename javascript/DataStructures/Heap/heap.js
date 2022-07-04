@@ -116,15 +116,15 @@ class Heap {
 
    _compare(index1, index2) {
       let result = [];
-      let minValue = this.type === 'max' ? 0 : Number.MAX_VALUE;
+      let minValue = this.type === 'max' ? Number.NEGATIVE_INFINITY : Number.MAX_VALUE;
 
       let value1 = this.items[index1] === undefined || this.items[index1] === null ? minValue : this.items[index1];
       let value2 = this.items[index2] === undefined || this.items[index2] === null ? minValue : this.items[index2];
       if (this.type === 'max') {
-         result.push(Math.abs(value1) > Math.abs(value2) ? index1 : index2);
+            result.push(value1 > value2 ? index1 : index2);
          result.push(this.items[result[0]]);
       } else {
-         result.push(Math.abs(value1) > Math.abs(value2) ? index1 : index2);
+            result.push(value1 > value2 ? index2 : index1);
          result.push(this.items[result[0]]);
       }
       return result[0] > this.size - 1 ? [0, 0] : result;
@@ -158,25 +158,11 @@ class Heap {
    }
 }
 
-//root
-// const tree = new Tree(50);
-// var holdNode;
-// //level 1
-// holdNode = tree.addLeft(tree.root, 30);
-// tree.addLeft(holdNode, 15);
-// tree.addRight(holdNode, 10);
-// holdNode = tree.addRight(tree.root, 20);
-// tree.addLeft(holdNode, 8);
-// tree.addRight(holdNode, 16);
 
-// tree.convertTree();
-// console.log(tree.items);
-//console.log(tree.isPerfect());
+const maxHeap = new Heap([-1,-2,-3,-4,-5]);
+maxHeap.heapFy();
+console.log(maxHeap.printHeap());
 
-// const maxHeap = new MaxHeap([50, 30, 20, 15, 10, 8, 16]);
-// console.log(maxHeap.insert(60));
-
-// const maxHeap = new Heap([50, 30, 20, 15, 10, 8, 14]);
 // console.log(maxHeap.items);
 // maxHeap.deleteMax();
 // console.log(maxHeap.items);
@@ -186,4 +172,6 @@ class Heap {
 // const maxHeapUnordered = new MaxHeap([50, 30, 20, 15, 10, 8, 16]);
 // console.log(maxHeapUnordered.printHeap());
 // console.log(maxHeapUnordered.heapFy());
+
+
 
