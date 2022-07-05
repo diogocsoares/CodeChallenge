@@ -8,31 +8,29 @@ class TrieNode {
 class WordDictionary {
    constructor() {
       this.root = new TrieNode();
-      this.root.children['.'] = new TrieNode()
    }
 
    addWord(word) {
       let currentNode = this.root;
-      let dotNode = this.root.children['.'];
+      let dotNode = this.root;
       let dotWord = new Array(word.length).fill('.');
       for (let i = 0; i < word.length; i++) {
-         if (!(word[i] in currentNode.children)) {
+         if (!(word[i] in currentNode.children)) 
             currentNode.children[word[i]] = new TrieNode();
-            if (word[i])
-               dotNode.children[word[i]] = new TrieNode();
-         }
-
          dotWord[i] = word[i];
+    
          for (let j = 0; j < dotWord.length; j++) {
             if (!(dotWord[j] in dotNode.children)) {
                dotNode.children[dotWord[j]] = new TrieNode();
             }
             dotNode = dotNode.children[dotWord[j]];
          }
+         dotWord.fill('.');
+         dotNode.endOfWord = true;
          currentNode = currentNode.children[word[i]];
+         dotNode = dotNode = this.root;
       }
-      currentNode.endOfWord = true;
-      dotNode.endOfWord = true
+      currentNode.endOfWord = true;  
    }
 
    search(word) {
