@@ -121,10 +121,10 @@ class Heap {
       let value1 = this.items[index1] === undefined || this.items[index1] === null ? minValue : this.items[index1];
       let value2 = this.items[index2] === undefined || this.items[index2] === null ? minValue : this.items[index2];
       if (this.type === 'max') {
-            result.push(value1 > value2 ? index1 : index2);
+         result.push(value1 > value2 ? index1 : index2);
          result.push(this.items[result[0]]);
       } else {
-            result.push(value1 > value2 ? index2 : index1);
+         result.push(value1 > value2 ? index2 : index1);
          result.push(this.items[result[0]]);
       }
       return result[0] > this.size - 1 ? [0, 0] : result;
@@ -159,9 +159,9 @@ class Heap {
 }
 
 
-const maxHeap = new Heap([-1,-2,-3,-4,-5]);
-maxHeap.heapFy();
-console.log(maxHeap.printHeap());
+// const maxHeap = new Heap([-1,-2,-3,-4,-5]);
+// maxHeap.heapFy();
+// console.log(maxHeap.printHeap());
 
 // console.log(maxHeap.items);
 // maxHeap.deleteMax();
@@ -173,5 +173,6 @@ console.log(maxHeap.printHeap());
 // console.log(maxHeapUnordered.printHeap());
 // console.log(maxHeapUnordered.heapFy());
 
+module.exports = Heap;
 
 
