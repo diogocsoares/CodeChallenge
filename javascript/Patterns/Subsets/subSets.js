@@ -1,48 +1,74 @@
-function subsets(word) {
-    let resultSubSets = [new Array(word.length).fill('.')];
+function printSubSets(word, depth, current) {
+    if (depth == word.length)
+        return;
 
-    function BFS(char, position, subSet) {
-        if (subSet > resultSubSets.length-1)
-            return;
-        
-        let tempSubSet = new Array(word.length).fill('.')
+    for (let i = depth + 1; i < word.length; i++) {
+        current += word[i];
+        printSubSets(word, i, current);
+        current = current.substring(0, current.length - 1);
+    }
+    console.log(current);
+}
+//printSubSets('abc', -1, '');
 
-        if (subSet === 0) {
-            tempSubSet[position] = char
-            resultSubSets.push(tempSubSet)
+
+
+function subSetsRecursive(word, depth = 0, subset = [], results = []) {
+    if (depth === word.length) {
+        results.push(subset);
+    } else {
+        subSetsRecursive(word, depth + 1, subset, results);
+        subSetsRecursive(word, depth + 1, [...subset, word[depth]], results);
+    }
+    return results;
+};
+//console.log(subSetsRecursive(['a', 'b', 'c']));
+
+//Is a depth first search in a decision tree.
+function subSetsRecursiveBackTracking(word, depth = 0, subset = [], results = []) {
+    if (depth === word.length) {
+        results.push([...subset]);
+    } else {
+        subSetsRecursiveBackTracking(word, depth + 1, subset, results);
+        subset.push(word[depth]);
+        subSetsRecursiveBackTracking(word, depth + 1, subset, results);
+        subset.pop();
+    }
+    return results;
+};
+//console.log(subSetsRecursiveBackTracking(['a', 'b', 'c']));
+
+function subSetsBinary(word) {
+    const subSetCount = Math.pow(2, word.length);
+    const result = [];
+    for (let i = 0; i < subSetCount; i++) {
+        const binaryString = i.toString(2).padStart(word.length, '0'); //Convert positive numbers in binary strings;
+        const subSet = [];
+        for (let j = 0; j < binaryString.length; j++) {
+            if (binaryString[j] === '1')
+                subSet.push(word[j]);
         }
-        else if (resultSubSets[subSet]) {
-            tempSubSet = resultSubSets;
-            tempSubSet[position] = char;
-            resultSubSets.push(tempSubSet);
-         }
-        
-        BFS(char, position, subSet + 1);
+        result.push(subSet);
     }
+    return result;
+}
+console.log(subSetsBinary(['a', 'b', 'c']));
 
-    for (let i = 0; i < word.length; i++){
-        BFS(word[i], i, 0);
+function subSetsBinary2(word) {
+    const subSetCount = Math.pow(2, word.length);
+    const result = [];
+    for (let i = 0; i < subSetCount; i++) {
+        const binaryString = i.toString(2).padStart(word.length, '.'); //Convert positive numbers in binary strings;
+        const subSet = [];
+        for (let j = 0; j < binaryString.length; j++) {
+            if (binaryString[j] === '1')
+                subSet.push(word[j]);
+            else
+                subSet.push('.');
+        }
+        result.push(subSet.join(''));
     }
-
-    return resultSubSets;
+    return result;
 }
 
-console.log(subsets('aba'));
-
-// ['A','B','A']
-
-
-// Result = ['.','.','.']
-
-// char [A]
-//     BFS(A, 0, 1)
-//     Result = ['.','.','.'] ['A','.','.']
-//     BFS(A, 0, 2)
-
-// char [B]
-//     BFS(B, 1, 1)
-//     Result = ['.','.','.'] ['A','.','.']['.','B','.']
-//     BFS(B, 1, 2)
-//     Result = ['.','.','.'] ['A','.','.']['.','B','.']['A','B','.']
-//     BFS(B, 1, 3)
-
+console.log(subSetsBinary2(['a', 'b', 'c']));

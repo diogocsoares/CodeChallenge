@@ -1,65 +1,60 @@
-class TrieNode {
+class WordDictionary {
    constructor() {
       this.children = {};
       this.endOfWord = false;
-   }
-}
-
-class WordDictionary {
-   constructor() {
-      this.root = new TrieNode();
+      this.max = 0;
    }
 
    addWord(word) {
-      let currentNode = this.root;
-      let dotNode = this.root;
-      let dotWord = new Array(word.length).fill('.');
+      let currentNode = this;
       for (let i = 0; i < word.length; i++) {
-         if (!(word[i] in currentNode.children)) 
-            currentNode.children[word[i]] = new TrieNode();
-         dotWord[i] = word[i];
-    
-         for (let j = 0; j < dotWord.length; j++) {
-            if (!(dotWord[j] in dotNode.children)) {
-               dotNode.children[dotWord[j]] = new TrieNode();
-            }
-            dotNode = dotNode.children[dotWord[j]];
+         currentNode.max = Math.max(currentNode.max, word.length)
+
+         if (!(word[i] in currentNode.children)) {
+            currentNode.children[word[i]] = new WordDictionary();
          }
-         dotWord.fill('.');
-         dotNode.endOfWord = true;
          currentNode = currentNode.children[word[i]];
-         dotNode = dotNode = this.root;
       }
-      currentNode.endOfWord = true;  
+
+      currentNode.max = Math.max(currentNode.max, word.length)
+      currentNode.endOfWord = true;
    }
 
    search(word) {
-      let currentNode = this.root;
+      let currentNode = this;
+
       for (let i = 0; i < word.length; i++) {
-         //         if (word[i] === '.') {
-         //            for (let char of Object.keys(currentNode.children)) {
-         //               let anyWord = [...word];
-         //              anyWord[i] = char;
-         //               if (this.search(anyWord.join('')))
-         //                  return true;
-         //            }
-         //            return false;
-         //         } else {
-         if (!(word[i] in currentNode.children))
+         const currChar = word[i];
+
+         if (currentNode.max < word.length)
             return false;
-         currentNode = currentNode.children[word[i]];
-         //       }
+
+         if (currChar === '.') {
+            const charKeys = Object.keys(currentNode.children);
+
+            for (let j = 0; j < charKeys.length; j++) {
+               const res = currentNode.children[charKeys[j]].search(word.slice(i + 1))
+               if (res === true)
+                  return true;
+            }
+            return false;
+         }
+
+         if (!currentNode.children[currChar])
+            return false
+
+         currentNode = currentNode.children[currChar];
       }
-      return currentNode.endOfWord === true;
+      return !!currentNode.endOfWord;
    }
 }
 
 let trie = new WordDictionary()
 trie.addWord('bad');
 trie.addWord('dad');
-trie.addWord('mad');
+trie.addWord('mxd');
 //trie.addWord('.ad');
 //trie.addWord('b..');
-console.log(trie.search('dad'))
+//console.log(trie.searchFast('dac'))
 console.log(trie.search('.ad'));
-console.log(trie.search('b..'));
+console.log(trie.search('m..'));
