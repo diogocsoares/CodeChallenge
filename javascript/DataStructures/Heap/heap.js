@@ -86,6 +86,8 @@ class Heap {
    }
 
    deleteMax() {
+      if (this.size === 0)
+         return;
       let deletedValue = this.items[0];
       this.items[0] = this.items[this.size - 1];
       this.items[this.size - 1] = deletedValue;
