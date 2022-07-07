@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+ 
+   <div class="grandparent">
+      <div class="parent">
+        <div class="child">
+          
+          <h3>What's Event Bubbling and Event Capturing?</h3>
+          When an event occurs on a DOM element, that event does not entirely occur on that just one element. In the Bubbling Phase, the event bubbles up or it goes to its parent, to its grandparents, to its grandparent's parent until it reaches all the way to the window.
+          
+          The addEventListener method has a third optional parameter useCapture with a default value of false the event will occur in the Bubbling phase if true the event will occur in the Capturing Phase. If we click on the child element it logs child,parent,grandparent, html, document and window respectively on the console. This is Event Bubbling.
+
+
+          <h3>What's the difference between event.preventDefault() and event.stopPropagation() methods?</h3>
+          The event.preventDefault() method prevents the default behavior of an element. If used in a form element it prevents it from submitting. If used in an anchor element it prevents it from navigating. If used in a contextmenu it prevents it from showing or displaying. While the event.stopPropagation() method stops the propagation of an event or it stops the event from occurring in the bubbling or capturing phase.
+
+          <h3>How to know if the event.preventDefault() method was used in an element?</h3>
+
+          We can use the event.defaultPrevented property in the event object. It returns a boolean indicating if the event.preventDefault() was called in a particular element.
+
+          <h3>What is event.target</h3>
+          In simplest terms, the event.target is the element on which the event occurred or the element that triggered the event.
+          If you click the button it will log the button markup even though we attach the event on the outermost div it will always log the button so we can conclude that the event.target is the element that triggered the event.
+
+          <div onclick="clickFunc(event)" style="text-align: center;margin:15px;
+          border:1px solid red;border-radius:3px;">
+              <div style="margin: 25px; border:1px solid royalblue;border-radius:3px;">
+                  <div style="margin:25px;border:1px solid skyblue;border-radius:3px;">
+                    <button style="margin:10px">
+                       Button
+                    </button>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        function clickFunc(event) {
+          console.log(event.target);
+        }
+        function addEvent(el, event, callback, isCapture = false) {
+          if (!el || !event || !callback || typeof callback !== 'function') return;
+          if (typeof el === 'string') {
+            el = document.querySelector(el);
+          };
+          console.log(event);
+          el.addEventListener(event, callback, isCapture);
+
+        }
+
+        addEvent(document, 'DOMContentLoaded', () => {
+          const child = document.querySelector('.child');
+          const parent = document.querySelector('.parent');
+          const grandparent = document.querySelector('.grandparent');
+
+          addEvent(child, 'click', function (e) {
+            console.log('child');
+            console.log(event.defaultPrevented)
+            console.log(event.target);
+          });
+
+          addEvent(parent, 'click', function (e) {
+            console.log('parent');
+          });
+
+          addEvent(grandparent, 'click', function (e) {
+            console.log('grandparent');
+          });
+
+          addEvent(document, 'click', function (e) {
+            console.log('document');
+          });
+
+          addEvent('html', 'click', function (e) {
+            console.log('html');
+          })
+
+          addEvent(window, 'click', function (e) {
+            console.log('window');
+          })
+
+        });
+   </script>
+</body>
+</html>
