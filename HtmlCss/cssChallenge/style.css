@@ -1,0 +1,25 @@
+body {
+   background-color: write;
+   font-family: sans-serif;
+}
+
+.wrapper {
+   border: 1px solid black;
+   width: 250px;
+   height: 250px;
+}
+
+.box {
+   background-color: red;
+   width: 100px;
+   height: 250px;
+   float: right;
+   display: flex;
+   align-items: flex-end;
+   clip-path: polygon(0% 60.00%, 100% 60%, 100% 100%, 0% 100%);
+   shape-outside: polygon(0% 60.00%, 100% 60%, 100% 100%, 0% 100%);
+}
+.content{
+   width: 100px;
+   height: 100px;
+}
