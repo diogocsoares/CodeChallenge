@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/containDuplicate.csproj",
+      "projectUniqueName": "/Users/diogosoares/dev/CodeChallenge/CSharp/containDuplicate/containDuplicate.csproj",
       "projectName": "containDuplicate",
-      "projectPath": "/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/containDuplicate.csproj",
+      "projectPath": "/Users/diogosoares/dev/CodeChallenge/CSharp/containDuplicate/containDuplicate.csproj",
       "packagesPath": "/Users/diogosoares/.nuget/packages/",
-      "outputPath": "/Users/diogosoares/dev/code-challenge/c-sharp/containDuplicate/obj/",
+      "outputPath": "/Users/diogosoares/dev/CodeChallenge/CSharp/containDuplicate/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/diogosoares/.nuget/NuGet/NuGet.Config"
@@ -49,7 +49,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -60,7 +61,7 @@
           },
           {
             "name": "Microsoft.NETCore.App.Host.osx-x64",
-            "version": "[5.0.16, 5.0.16]"
+            "version": "[5.0.17, 5.0.17]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
@@ -72,7 +73,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
       }
     }
   }
