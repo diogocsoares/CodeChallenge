@@ -53,8 +53,8 @@ class PyHashTable:
 
     def hash_function(self, key):
         _hash = 0
-        for i in range(len(key)):
-            _hash = (_hash + ord(key[i]) * i) % len(self.data)
+        for index, char in enumerate(key):
+            _hash = (_hash + ord(char) * index) % len(self.data)
         return _hash
 
     def set(self, key, value):
