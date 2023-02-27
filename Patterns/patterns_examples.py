@@ -117,8 +117,13 @@ def detect_cycle(head):
 # print(middle)
 
 # Example linked list with a cycle: 1 -> 2 -> 3 -> 4 -> 5 -> 2
-
-head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
+# head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
 # head.next.next.next.next = head.next
-has_cycle = has_cycle(head)
-print(has_cycle)
+# has_cycle = has_cycle(head)
+# print(has_cycle)
+
+# Example linked list with a cycle: 1 -> 2 -> 3 -> 4 -> 5 -> 2
+# head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
+# head.next.next.next.next = head.next
+# cycle_node = detect_cycle(head)
+# print(cycle_node.val)
