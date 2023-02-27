@@ -61,7 +61,64 @@ def find_pairs(nums, target):
     return pairs
 
 
-nums = [1, 2, 3, 4, 5, 6]
-target = 11
-pairs = find_pairs(nums, target)
-print(pairs)
+# nums = [1, 2, 3, 4, 5, 6]
+# target = 11
+# pairs = find_pairs(nums, target)
+# print(pairs)
+
+# ----- Fast and Slow Pointers -----
+# The fast and slow pointer algorithm pattern is commonly used in linked list problems to find the middle or to detect cycles. Here's an example of how to use the fast and slow pointer pattern to find the middle of a linked list:
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+def find_middle(head):
+    slow = head
+    fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    return slow.val
+
+
+def has_cycle(head):
+    slow = head
+    fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
+
+
+def detect_cycle(head):
+    slow = head
+    fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            break
+    if not fast or not fast.next:
+        return None
+    slow = head
+    while slow != fast:
+        slow = slow.next
+        fast = fast.next
+    return slow
+
+
+# head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
+# middle = find_middle(head)
+# print(middle)
+
+# Example linked list with a cycle: 1 -> 2 -> 3 -> 4 -> 5 -> 2
+
+head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
+# head.next.next.next.next = head.next
+has_cycle = has_cycle(head)
+print(has_cycle)
