@@ -127,3 +127,35 @@ def detect_cycle(head):
 # head.next.next.next.next = head.next
 # cycle_node = detect_cycle(head)
 # print(cycle_node.val)
+
+# ----- Merge intervals -----
+# The merge intervals algorithm pattern is typically used when dealing with a list of intervals that may overlap with each other. The goal is to merge any overlapping intervals into a single interval. This pattern can be used in a variety of applications, such as:
+
+# Scheduling: If you have a list of time intervals representing appointments or meetings, you may need to merge overlapping intervals to find available time slots.
+
+# Traffic control: If you have a list of time intervals representing the arrival and departure times of planes at an airport, you may need to merge overlapping intervals to optimize air traffic control.
+
+# Log analysis: If you have a list of time intervals representing the start and end times of log events, you may need to merge overlapping intervals to analyze patterns or detect anomalies.
+
+# Genomics: If you have a list of genomic intervals representing genes or regulatory regions, you may need to merge overlapping intervals to identify larger genomic features.
+
+# The merge intervals pattern is a commonly used algorithm pattern in computer science and can be a useful tool for solving a wide range of problems involving intervals.
+
+
+def merge_intervals(intervals):
+    if not intervals:
+        return []
+    intervals.sort(key=lambda x: x[0])
+    merged = [intervals[0]]
+    for interval in intervals[1:]:
+        if interval[0] <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], interval[1])
+        else:
+            merged.append(interval)
+    return merged
+
+
+intervals = [[1, 3], [2, 6], [8, 16], [15, 18]]
+
+merged_intervals = merge_intervals(intervals)
+print(merged_intervals)
