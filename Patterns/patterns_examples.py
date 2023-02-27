@@ -155,7 +155,45 @@ def merge_intervals(intervals):
     return merged
 
 
-intervals = [[1, 3], [2, 6], [8, 16], [15, 18]]
+# intervals = [[1, 3], [2, 6], [8, 16], [15, 18]]
+# merged_intervals = merge_intervals(intervals)
+# print(merged_intervals)
 
-merged_intervals = merge_intervals(intervals)
-print(merged_intervals)
+
+# ----- Cycle Sort -----
+
+# Cycle sort is an in-place sorting algorithm that works particularly well for arrays with many repeated values. The basic idea behind cycle sort is to find the correct position of each element in the array by cycling through the values until the correct position is found.
+
+# Here is the step-by-step process for cycle sort:
+
+# For each element in the array, count the number of elements that are less than it. This gives you the number of cycles needed to reach the correct position of that element.
+
+# Cycle through the elements in each cycle. Starting with the current element, swap it with the element that should be in its correct position. Continue swapping elements until you reach the starting element. This will complete one cycle.
+
+# Repeat step 2 for each cycle until all elements are in their correct positions.
+
+def cycle_sort(arr):
+    n = len(arr)
+    for cycle_start in range(n - 1):
+        item = arr[cycle_start]
+        pos = cycle_start
+        for i in range(cycle_start + 1, n):
+            if arr[i] < item:
+                pos += 1
+        if pos == cycle_start:
+            continue
+        while item == arr[pos]:
+            pos += 1
+        arr[pos], item = item, arr[pos]
+        while pos != cycle_start:
+            pos = cycle_start
+            for i in range(cycle_start + 1, n):
+                if arr[i] < item:
+                    pos += 1
+            while item == arr[pos]:
+                pos += 1
+            arr[pos], item = item, arr[pos]
+    return arr
+
+
+print(cycle_sort([1, 5, 10, 3, 2, 4, 8]))
