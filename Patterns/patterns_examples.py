@@ -196,4 +196,12 @@ def cycle_sort(arr):
     return arr
 
 
-print(cycle_sort([1, 5, 10, 3, 2, 4, 8]))
+# print(cycle_sort([1, 5, 10, 3, 2, 4, 8]))
+
+my_list = [1, 2, "3", "four", 5.0]
+
+for item in my_list:
+    if isinstance(item, (int, float)):
+        print(f"{item} is a number")
+    else:
+        print(f"{item} is not a number")
